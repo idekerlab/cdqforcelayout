@@ -73,3 +73,36 @@ class QFNetwork:
         return cx_layout
 
         
+CY_VISUAL_PROPERTIES_ASPECT = 'cyVisualProperties'
+"""
+Name of aspect containing visual properties where
+node size can be extracted
+"""
+
+def _get_node_size_from_cyvisual_properties(net_cx=None):
+    """
+    Gets node size from visual properties if it exists
+
+    :param net_cx:
+    :type net_cx: :py:class:`ndex2.nice_cx_network.NiceCXNetwork`
+    :raises ValueError: If **net_cx** passed in is ``None``
+    :return: Size of node as retrieved from cyVisualProperties
+             aspect or None, if not found
+    :rtype: float
+    """
+    if net_cx is None:
+        raise ValueError('Network passed in cannot be None')
+# TODO get help on using the logger
+    v_props = net_cx.get_opaque_aspect(CY_VISUAL_PROPERTIES_ASPECT)
+    if v_props is None:
+        logger.debug('No ' + CY_VISUAL_PROPERTIES_ASPECT +
+                     ' aspect found in network')
+        return None
+    for entry in v_props:
+        if not entry['properties_of'] == 'nodes:default':
+            continue
+# TODO make this return an integer
+        return max(float(entry['properties']['NODE_WIDTH']),
+                   float(entry['properties']['NODE_HEIGHT']),
+                   float(entry['properties']['NODE_SIZE']))
+    return None

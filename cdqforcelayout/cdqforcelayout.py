@@ -11,21 +11,11 @@ from contextlib import redirect_stdout
 import ndex2
 from qflayout import QFLayout
 
-
 logger = logging.getLogger(__name__)
-
-
-CY_VISUAL_PROPERTIES_ASPECT = 'cyVisualProperties'
-"""
-Name of aspect containing visual properties where
-node size can be extracted
-"""
-
 
 class Formatter(argparse.ArgumentDefaultsHelpFormatter,
                 argparse.RawDescriptionHelpFormatter):
     pass
-
 
 def _parse_arguments(desc, args):
     """
@@ -60,36 +50,6 @@ def _parse_arguments(desc, args):
                                  'positions in format LEFT,TOP,RIGHT,BOTTOM '
                                  'ex: 0.0,0.0,500.0,600.0')
     return parser.parse_args(args)
-
-
-def _get_node_size_from_cyvisual_properties(net_cx=None):
-    """
-    Gets node size from visual properties if it exists
-
-    :param net_cx:
-    :type net_cx: :py:class:`ndex2.nice_cx_network.NiceCXNetwork`
-    :raises ValueError: If **net_cx** passed in is ``None``
-    :return: Size of node as retrieved from cyVisualProperties
-             aspect or None, if not found
-    :rtype: float
-    """
-    if net_cx is None:
-        raise ValueError('Network passed in cannot be None')
-
-    v_props = net_cx.get_opaque_aspect(CY_VISUAL_PROPERTIES_ASPECT)
-    if v_props is None:
-        logger.debug('No ' + CY_VISUAL_PROPERTIES_ASPECT +
-                     ' aspect found in network')
-        return None
-    for entry in v_props:
-        if not entry['properties_of'] == 'nodes:default':
-            continue
-
-        return max(float(entry['properties']['NODE_WIDTH']),
-                   float(entry['properties']['NODE_HEIGHT']),
-                   float(entry['properties']['NODE_SIZE']))
-    return None
-
 
 def run_layout(theargs, out_stream=sys.stdout,
                err_stream=sys.stderr):
