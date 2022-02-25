@@ -6,10 +6,10 @@ import argparse
 import traceback
 import json
 import logging
-from contextlib import redirect_stdout
+from contextlib2 import redirect_stdout
 
 import ndex2
-from qflayout import QFLayout
+from .qflayout import QFLayout
 
 logger = logging.getLogger(__name__)
 
@@ -38,17 +38,6 @@ def _parse_arguments(desc, args):
                         help='Layout algorithm to use. '
                              'so far, there is only the default'
                             )
-    scalegroup = parser.add_mutually_exclusive_group()
-    scalegroup.add_argument('--scale', type=float,
-                            help='If set, overrides default and '
-                                 'uniformly scales layout coordinates')
-    scalegroup.add_argument('--fit_into', type=str,
-                            help='If set, overrides default and uniformly '
-                                 'adjusts layout coordinates to fit in'
-                                 'bounding box passed in. Value should be a '
-                                 'comma delimited list of floating point '
-                                 'positions in format LEFT,TOP,RIGHT,BOTTOM '
-                                 'ex: 0.0,0.0,500.0,600.0')
     return parser.parse_args(args)
 
 def run_layout(theargs, out_stream=sys.stdout,
