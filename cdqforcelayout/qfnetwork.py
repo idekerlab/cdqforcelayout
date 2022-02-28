@@ -15,17 +15,17 @@ from random import randint
 class QFNetwork:
  
     def __init__(self, edge_array, name="unnamed network") -> None:
-        node_dict = {}
+        self.node_dict = {}
         for edge in edge_array:
             # print(edge[0], " ", edge[1])
-            if edge[0] not in node_dict:
-                node_dict[edge[0]] = {"adj":set()}
-            node_dict[edge[0]]["adj"].add(edge[1])
-            node_dict[edge[0]]["degree"] = len(node_dict[edge[0]]["adj"])
-            if edge[1] not in node_dict:
-                node_dict[edge[1]] = {"adj":set()}
-            node_dict[edge[1]]["adj"].add(edge[0])
-            node_dict[edge[1]]["degree"] = len(node_dict[edge[1]]["adj"])
+            if edge[0] not in self.node_dict:
+                self.node_dict[edge[0]] = {"adj":set()}
+            self.node_dict[edge[0]]["adj"].add(edge[1])
+            self.node_dict[edge[0]]["degree"] = len(self.node_dict[edge[0]]["adj"])
+            if edge[1] not in self.node_dict:
+                self.node_dict[edge[1]] = {"adj":set()}
+            self.node_dict[edge[1]]["adj"].add(edge[0])
+            self.node_dict[edge[1]]["degree"] = len(self.node_dict[edge[1]]["adj"])
     
     @classmethod
     def from_nicecx(cls, nicecx):
@@ -41,6 +41,9 @@ class QFNetwork:
     def get_sorted_nodes(self):
         # get the nodes as a list, sorted by degree, highest degree first
         return sorted(self.node_dict.values(), key=itemgetter('degree'), reverse=True)
+
+    def get_nodecount(self):
+        return len(self.node_dict.values())
 
     def place_nodes_randomly(self, dimension):
         # randomly place the nodes in the center of the board
@@ -71,38 +74,3 @@ class QFNetwork:
                      "y": node["y"] * node_dimension}
             cx_layout.append(cx_node)
         return cx_layout
-
-        
-CY_VISUAL_PROPERTIES_ASPECT = 'cyVisualProperties'
-"""
-Name of aspect containing visual properties where
-node size can be extracted
-"""
-
-def _get_node_size_from_cyvisual_properties(net_cx=None):
-    """
-    Gets node size from visual properties if it exists
-
-    :param net_cx:
-    :type net_cx: :py:class:`ndex2.nice_cx_network.NiceCXNetwork`
-    :raises ValueError: If **net_cx** passed in is ``None``
-    :return: Size of node as retrieved from cyVisualProperties
-             aspect or None, if not found
-    :rtype: float
-    """
-    if net_cx is None:
-        raise ValueError('Network passed in cannot be None')
-# TODO get help on using the logger
-    v_props = net_cx.get_opaque_aspect(CY_VISUAL_PROPERTIES_ASPECT)
-    if v_props is None:
-        logger.debug('No ' + CY_VISUAL_PROPERTIES_ASPECT +
-                     ' aspect found in network')
-        return None
-    for entry in v_props:
-        if not entry['properties_of'] == 'nodes:default':
-            continue
-# TODO make this return an integer
-        return max(float(entry['properties']['NODE_WIDTH']),
-                   float(entry['properties']['NODE_HEIGHT']),
-                   float(entry['properties']['NODE_SIZE']))
-    return None

@@ -13,32 +13,32 @@ class QFLayout:
     def __init__(self, qfnetwork, sparsity=30, r_radius=4, 
                         a_radius=10, r_scale=10, a_scale=5, center_attractor_scale=0.01,
                         initialize_coordinates=True, dtype=np.int16):
-        integer_type = dtype
-        network = qfnetwork
-        gameboard = self._make_gameboard(sparsity, center_attractor_scale)
-        r_field = repulsion_field(r_radius, scale=r_scale, center_spike=True, dtype=integer_type)
-        a_field = attraction_field(a_radius, scale=a_scale, dtype=integer_type)
-        a_field_med = attraction_field(a_radius, scale=a_scale*5, dtype=integer_type)
-        a_field_high = attraction_field(a_radius, scale=a_scale*30, dtype=integer_type)
+        self.integer_type = dtype
+        self.network = qfnetwork
+        self.gameboard = self._make_gameboard(sparsity, center_attractor_scale)
+        self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
+        self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
+        self.a_field_med = attraction_field(a_radius, a_scale*5, self.integer_type)
+        self.a_field_high = attraction_field(a_radius, a_scale*30, self.integer_type)
         # make a scratchpad board where we add all the attraction fields
         # and the use it to update the gameboard
-        s_field = np.zeros(self.gameboard.shape, integer_type)
+        self.s_field = np.zeros(self.gameboard.shape, self.integer_type)
 
 
     @classmethod
     def from_nicecx(cls, nicecx, **kwargs):
         return cls(qfnetwork.QFNetwork.from_nicecx(nicecx), **kwargs)
 
-    def make_gameboard(self, sparsity, center_attractor_scale):
-        radius = round(sqrt(self.network.nodecount() * sparsity))
+    def _make_gameboard(self, sparsity, center_attractor_scale):
+        radius = round(sqrt(self.network.get_nodecount() * sparsity))
         dimension = (2*radius)+1
-        board = np.zeros((dimension, dimension), dtype=self.dtype)
+        board = np.zeros((dimension, dimension), dtype=self.integer_type)
         # nodes are pulled towards the center of the gameboard
         # by giving the gameboard an attraction field at its center
         # the radius of the field is the distance from the center to the corners
         center = int(board.shape[0]/2)
         center_attractor_radius = int(sqrt(2 * center**2))
-        add_field(attraction_field(radius=center_attractor_radius, scale=center_attractor_scale),
+        add_field(attraction_field(center_attractor_radius, center_attractor_scale, self.integer_type),
               board,
               center, center)
         return board

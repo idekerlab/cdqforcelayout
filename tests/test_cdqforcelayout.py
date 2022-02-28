@@ -15,7 +15,7 @@ import io
 import tempfile
 import shutil
 import json
-from cdqforcelayout import cdqforcelayoutcmd
+from ..cdqforcelayout import cdqforcelayoutcmd
 
 
 class TestCdqforceLayout(unittest.TestCase):

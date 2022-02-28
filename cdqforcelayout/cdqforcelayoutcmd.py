@@ -9,7 +9,7 @@ import logging
 from contextlib2 import redirect_stdout
 
 import ndex2
-from .qflayout import QFLayout
+import qflayout
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +66,7 @@ def run_layout(theargs, out_stream=sys.stdout,
     try:
         with redirect_stdout(sys.stderr):
             net = ndex2.create_nice_cx_from_file(theargs.input)
-            qfl = QFLayout.from_nicecx(net, theargs)
+            qfl = qflayout.QFLayout.from_nicecx(net)
             new_layout = qfl.do_layout()
             # write value of cartesianLayout aspect to output stream
             json.dump(new_layout, out_stream)

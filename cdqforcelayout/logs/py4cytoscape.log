@@ -1,0 +1,657 @@
+2022-02-27 15:33:23,103 [DEBUG] py4...: Calling cytoscape_ping()
+2022-02-27 15:33:23,109 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2022-02-27 15:33:23,110 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 15:33:23,110 [DEBUG] py4...: Attempting to connect to local Cytoscape
+2022-02-27 15:33:23,130 [DEBUG] py4...: Detected local Cytoscape
+2022-02-27 15:33:23,131 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/setSandbox), json: {'sandboxName': 'default_sandbox', 'copySamples': True, 'reinitialize': True}
+2022-02-27 15:33:23,644 [DEBUG] py4...: ǀǀOK[200], content: {
+ "data": {"sandboxPath":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox"},
+ "errors":[]
+}
+2022-02-27 15:33:23,644 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2022-02-27 15:33:23,662 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.9.1"}
+2022-02-27 15:33:23,662 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.9.1'}
+2022-02-27 15:33:23,662 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.9.1', 'automationAPIVersion': '1.3.0', 'py4cytoscapeVersion': '0.0.11'}
+2022-02-27 15:33:23,663 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2022-02-27 15:33:23,664 [DEBUG] py4...: --------------------
+2022-02-27 15:35:08,068 [DEBUG] py4...: Calling cytoscape_ping()
+2022-02-27 15:35:08,068 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2022-02-27 15:35:08,069 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 15:35:08,069 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2022-02-27 15:35:08,087 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.9.1"}
+2022-02-27 15:35:08,087 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.9.1'}
+2022-02-27 15:35:08,087 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.9.1', 'automationAPIVersion': '1.3.0', 'py4cytoscapeVersion': '0.0.11'}
+2022-02-27 15:35:08,088 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2022-02-27 15:35:08,088 [DEBUG] py4...: --------------------
+2022-02-27 15:35:08,089 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 15:35:08,090 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 15:35:08,090 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 15:35:13,394 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":442730,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 15:35:13,395 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 442730, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 15:35:13,395 [DEBUG] py4...: Returning 'import_network_from_ndex': 442730
+2022-02-27 15:35:13,395 [DEBUG] py4...: --------------------
+2022-02-27 16:05:45,843 [DEBUG] py4...: Calling import_network_from_ndex()
+2022-02-27 16:05:45,850 [DEBUG] py4...: 'import_network_from_ndex' exception TypeError("import_network_from_ndex() missing 1 required positional argument: 'ndex_id'")
+2022-02-27 16:05:45,850 [DEBUG] py4...: --------------------
+2022-02-27 16:06:27,133 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:06:27,134 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:06:27,136 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:06:30,910 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":448124,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:06:30,911 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 448124, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:06:30,912 [DEBUG] py4...: Returning 'import_network_from_ndex': 448124
+2022-02-27 16:06:30,912 [DEBUG] py4...: --------------------
+2022-02-27 16:06:30,913 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:06:30,914 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:06:31,102 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:06:31,103 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:06:31,103 [DEBUG] py4...: --------------------
+2022-02-27 16:06:31,211 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:06:31,211 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:06:31,240 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:06:31,241 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:06:31,241 [DEBUG] py4...: --------------------
+2022-02-27 16:06:31,242 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:06:31,242 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:06:31,260 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:06:31,261 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:06:31,261 [DEBUG] py4...: --------------------
+2022-02-27 16:06:31,366 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:06:31,367 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:06:31,382 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:06:31,383 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:06:31,383 [DEBUG] py4...: --------------------
+2022-02-27 16:09:01,370 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:09:01,370 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:09:01,371 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:09:04,837 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":453518,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:09:04,837 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 453518, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:09:04,837 [DEBUG] py4...: Returning 'import_network_from_ndex': 453518
+2022-02-27 16:09:04,838 [DEBUG] py4...: --------------------
+2022-02-27 16:09:04,838 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:09:04,839 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:09:04,859 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:09:04,859 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:09:04,859 [DEBUG] py4...: --------------------
+2022-02-27 16:09:04,970 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:09:04,970 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:09:04,986 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:09:04,986 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:09:04,986 [DEBUG] py4...: --------------------
+2022-02-27 16:09:04,986 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:09:04,987 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:09:05,006 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:09:05,007 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:09:05,007 [DEBUG] py4...: --------------------
+2022-02-27 16:09:05,108 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:09:05,108 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:09:05,125 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:09:05,125 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:09:05,125 [DEBUG] py4...: --------------------
+2022-02-27 16:10:39,300 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:10:39,301 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:10:39,302 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:10:41,275 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":458912,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:10:41,275 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 458912, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:10:41,275 [DEBUG] py4...: Returning 'import_network_from_ndex': 458912
+2022-02-27 16:10:41,276 [DEBUG] py4...: --------------------
+2022-02-27 16:10:41,276 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:10:41,276 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:10:41,301 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:10:41,302 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:10:41,302 [DEBUG] py4...: --------------------
+2022-02-27 16:10:41,415 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:10:41,415 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:10:41,433 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:10:41,433 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:10:41,433 [DEBUG] py4...: --------------------
+2022-02-27 16:10:41,433 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:10:41,434 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:10:41,449 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:10:41,449 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:10:41,450 [DEBUG] py4...: --------------------
+2022-02-27 16:10:41,554 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:10:41,554 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:10:41,567 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:10:41,567 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:10:41,567 [DEBUG] py4...: --------------------
+2022-02-27 16:10:46,582 [DEBUG] py4...: Calling export_image('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpe537g3vl\\458912.png', type='PNG', width=4000, network=442730)
+2022-02-27 16:10:46,582 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,582 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,583 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:10:46,606 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:10:46,606 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:10:46,606 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,606 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,607 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,607 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:10:46,620 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:10:46,620 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:10:46,620 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 16:10:46,620 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,620 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 16:10:46,633 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 16:10:46,633 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 16:10:46,634 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 16:10:46,634 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 16:10:46,634 [DEBUG] py4...: ǀCalling sandbox_get_file_info('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpe537g3vl\\458912.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,634 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="C:\\Users\\depra\\AppData\\Local\\Temp\\tmpe537g3vl\\458912.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:10:46,636 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': 'C:\\Users\\depra\\AppData\\Local\\Temp\\tmpe537g3vl\\458912.png'}
+2022-02-27 16:10:46,702 [DEBUG] py4...: ǀǀInternal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"The filename, directory name, or volume label syntax is incorrect","link":"file:/C:/Users/depra/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2022-02-27 16:10:46,705 [DEBUG] py4...: ǀǀ'commands_post' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:10:46,707 [DEBUG] py4...: ǀ'sandbox_get_file_info' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:10:46,707 [DEBUG] py4...: 'export_image' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:10:46,707 [DEBUG] py4...: --------------------
+2022-02-27 16:18:48,063 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:18:48,063 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:18:48,064 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:18:50,970 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":464306,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:18:50,970 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 464306, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:18:50,971 [DEBUG] py4...: Returning 'import_network_from_ndex': 464306
+2022-02-27 16:18:50,972 [DEBUG] py4...: --------------------
+2022-02-27 16:18:50,972 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:18:50,973 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:18:50,995 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:18:50,996 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:18:50,996 [DEBUG] py4...: --------------------
+2022-02-27 16:18:51,108 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:18:51,108 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:18:51,124 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:18:51,124 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:18:51,124 [DEBUG] py4...: --------------------
+2022-02-27 16:18:51,124 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:18:51,125 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:18:51,142 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:18:51,142 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:18:51,142 [DEBUG] py4...: --------------------
+2022-02-27 16:18:51,248 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:18:51,249 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:18:51,263 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:18:51,263 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:18:51,264 [DEBUG] py4...: --------------------
+2022-02-27 16:18:56,275 [DEBUG] py4...: Calling export_image('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpui9kwo6m\\464306.png', type='PNG', width=4000, network=442730)
+2022-02-27 16:18:56,278 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,278 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,278 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:18:56,293 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,464306,458912,453518,448124,15004,442730]
+2022-02-27 16:18:56,293 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 464306, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:18:56,293 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,294 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,294 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,294 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:18:56,306 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,464306,458912,453518,448124,15004,442730]
+2022-02-27 16:18:56,307 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 464306, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:18:56,307 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 16:18:56,307 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,307 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 16:18:56,321 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 16:18:56,321 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 16:18:56,321 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 16:18:56,321 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 16:18:56,322 [DEBUG] py4...: ǀCalling sandbox_get_file_info('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpui9kwo6m\\464306.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,322 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="C:\\Users\\depra\\AppData\\Local\\Temp\\tmpui9kwo6m\\464306.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,322 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': 'C:\\Users\\depra\\AppData\\Local\\Temp\\tmpui9kwo6m\\464306.png'}
+2022-02-27 16:18:56,344 [DEBUG] py4...: ǀǀInternal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"The filename, directory name, or volume label syntax is incorrect","link":"file:/C:/Users/depra/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2022-02-27 16:18:56,345 [DEBUG] py4...: ǀǀ'commands_post' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:18:56,347 [DEBUG] py4...: ǀ'sandbox_get_file_info' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:18:56,347 [DEBUG] py4...: 'export_image' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:18:56,348 [DEBUG] py4...: --------------------
+2022-02-27 16:18:56,349 [DEBUG] py4...: Calling delete_network(network=464306)
+2022-02-27 16:18:56,349 [DEBUG] py4...: ǀCalling get_network_suid(464306)
+2022-02-27 16:18:56,349 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:18:56,349 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:18:56,359 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,464306,458912,453518,448124,15004,442730]
+2022-02-27 16:18:56,359 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 464306, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:18:56,359 [DEBUG] py4...: ǀReturning 'get_network_suid': 464306
+2022-02-27 16:18:56,359 [DEBUG] py4...: ǀCalling cyrest_delete('networks/464306', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 16:18:56,360 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/464306)
+2022-02-27 16:18:57,006 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 16:18:57,006 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 16:18:57,007 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 16:18:57,007 [DEBUG] py4...: --------------------
+2022-02-27 16:42:30,335 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:42:30,340 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:42:30,343 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:42:32,829 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":469700,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:42:32,831 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 469700, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:42:32,831 [DEBUG] py4...: Returning 'import_network_from_ndex': 469700
+2022-02-27 16:42:32,831 [DEBUG] py4...: --------------------
+2022-02-27 16:42:32,832 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:42:32,833 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:42:32,858 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:42:32,859 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:42:32,859 [DEBUG] py4...: --------------------
+2022-02-27 16:42:32,973 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:42:32,973 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:42:32,988 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:42:32,989 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:42:32,989 [DEBUG] py4...: --------------------
+2022-02-27 16:42:32,989 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:42:32,989 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:42:33,005 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:42:33,006 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:42:33,006 [DEBUG] py4...: --------------------
+2022-02-27 16:42:33,115 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:42:33,115 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:42:33,131 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:42:33,131 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:42:33,131 [DEBUG] py4...: --------------------
+2022-02-27 16:42:38,148 [DEBUG] py4...: Calling export_image('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpwsuw1omv\\469700.png', type='PNG', width=4000, network=442730)
+2022-02-27 16:42:38,148 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,149 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,149 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:42:38,161 [DEBUG] py4...: ǀǀOK[200], content: [469700,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:42:38,161 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [469700, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:42:38,162 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,162 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,163 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,163 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:42:38,175 [DEBUG] py4...: ǀǀǀǀOK[200], content: [469700,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:42:38,176 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [469700, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:42:38,176 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 16:42:38,176 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,176 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 16:42:38,190 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 16:42:38,190 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 16:42:38,190 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 16:42:38,191 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 16:42:38,191 [DEBUG] py4...: ǀCalling sandbox_get_file_info('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpwsuw1omv\\469700.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,192 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="C:\\Users\\depra\\AppData\\Local\\Temp\\tmpwsuw1omv\\469700.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,192 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': 'C:\\Users\\depra\\AppData\\Local\\Temp\\tmpwsuw1omv\\469700.png'}
+2022-02-27 16:42:38,218 [DEBUG] py4...: ǀǀInternal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"The filename, directory name, or volume label syntax is incorrect","link":"file:/C:/Users/depra/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2022-02-27 16:42:38,219 [DEBUG] py4...: ǀǀ'commands_post' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:42:38,220 [DEBUG] py4...: ǀ'sandbox_get_file_info' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:42:38,220 [DEBUG] py4...: 'export_image' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:42:38,220 [DEBUG] py4...: --------------------
+2022-02-27 16:42:38,222 [DEBUG] py4...: Calling delete_network(network=469700)
+2022-02-27 16:42:38,222 [DEBUG] py4...: ǀCalling get_network_suid(469700)
+2022-02-27 16:42:38,222 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:42:38,222 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:42:38,233 [DEBUG] py4...: ǀǀOK[200], content: [469700,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:42:38,233 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [469700, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:42:38,233 [DEBUG] py4...: ǀReturning 'get_network_suid': 469700
+2022-02-27 16:42:38,233 [DEBUG] py4...: ǀCalling cyrest_delete('networks/469700', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 16:42:38,234 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/469700)
+2022-02-27 16:42:38,692 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 16:42:38,693 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 16:42:38,693 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 16:42:38,693 [DEBUG] py4...: --------------------
+2022-02-27 16:46:12,203 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:46:12,203 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:46:12,204 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:46:15,210 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":475094,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:46:15,210 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 475094, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:46:15,210 [DEBUG] py4...: Returning 'import_network_from_ndex': 475094
+2022-02-27 16:46:15,210 [DEBUG] py4...: --------------------
+2022-02-27 16:46:15,211 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:46:15,211 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:46:15,228 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:46:15,228 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:46:15,228 [DEBUG] py4...: --------------------
+2022-02-27 16:46:15,342 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:46:15,342 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:46:15,356 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:46:15,356 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:46:15,357 [DEBUG] py4...: --------------------
+2022-02-27 16:46:15,357 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:46:15,357 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:46:15,373 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:46:15,373 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:46:15,374 [DEBUG] py4...: --------------------
+2022-02-27 16:46:15,484 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:46:15,485 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:46:15,499 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:46:15,500 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:46:15,500 [DEBUG] py4...: --------------------
+2022-02-27 16:46:20,519 [DEBUG] py4...: Calling export_image('C:\\Users\\depra\\AppData\\Local\\Temp\\tmp5uydypk_\\475094', type='PNG', width=4000, network=442730)
+2022-02-27 16:46:20,519 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,520 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,520 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:46:20,530 [DEBUG] py4...: ǀǀOK[200], content: [475094,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:46:20,531 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [475094, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:46:20,531 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,531 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,532 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,532 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:46:20,543 [DEBUG] py4...: ǀǀǀǀOK[200], content: [475094,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:46:20,544 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [475094, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:46:20,544 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 16:46:20,544 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,544 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀCalling sandbox_get_file_info('C:\\Users\\depra\\AppData\\Local\\Temp\\tmp5uydypk_\\475094.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,555 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="C:\\Users\\depra\\AppData\\Local\\Temp\\tmp5uydypk_\\475094.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,556 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': 'C:\\Users\\depra\\AppData\\Local\\Temp\\tmp5uydypk_\\475094.png'}
+2022-02-27 16:46:20,647 [DEBUG] py4...: ǀǀInternal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"The filename, directory name, or volume label syntax is incorrect","link":"file:/C:/Users/depra/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2022-02-27 16:46:20,648 [DEBUG] py4...: ǀǀ'commands_post' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:46:20,648 [DEBUG] py4...: ǀ'sandbox_get_file_info' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:46:20,649 [DEBUG] py4...: 'export_image' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:46:20,650 [DEBUG] py4...: --------------------
+2022-02-27 16:46:20,651 [DEBUG] py4...: Calling delete_network(network=475094)
+2022-02-27 16:46:20,651 [DEBUG] py4...: ǀCalling get_network_suid(475094)
+2022-02-27 16:46:20,651 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:46:20,651 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:46:20,660 [DEBUG] py4...: ǀǀOK[200], content: [475094,39156,197,458912,453518,448124,15004,442730]
+2022-02-27 16:46:20,661 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [475094, 39156, 197, 458912, 453518, 448124, 15004, 442730]
+2022-02-27 16:46:20,661 [DEBUG] py4...: ǀReturning 'get_network_suid': 475094
+2022-02-27 16:46:20,661 [DEBUG] py4...: ǀCalling cyrest_delete('networks/475094', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 16:46:20,661 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/475094)
+2022-02-27 16:46:21,245 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 16:46:21,245 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 16:46:21,245 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 16:46:21,245 [DEBUG] py4...: --------------------
+2022-02-27 16:48:31,157 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 16:48:31,158 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 16:48:31,158 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 16:48:33,660 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":480488,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 16:48:33,660 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 480488, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 16:48:33,661 [DEBUG] py4...: Returning 'import_network_from_ndex': 480488
+2022-02-27 16:48:33,661 [DEBUG] py4...: --------------------
+2022-02-27 16:48:33,661 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:48:33,663 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 16:48:33,683 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:48:33,684 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:48:33,684 [DEBUG] py4...: --------------------
+2022-02-27 16:48:33,798 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:48:33,798 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:48:33,812 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:48:33,813 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:48:33,813 [DEBUG] py4...: --------------------
+2022-02-27 16:48:33,813 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 16:48:33,814 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 16:48:33,826 [DEBUG] py4...: OK[200], content: 
+2022-02-27 16:48:33,826 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 16:48:33,827 [DEBUG] py4...: --------------------
+2022-02-27 16:48:33,942 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 16:48:33,942 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 16:48:33,956 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 16:48:33,956 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 16:48:33,957 [DEBUG] py4...: --------------------
+2022-02-27 16:48:38,969 [DEBUG] py4...: Calling export_image('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpt03p8hn2\\480488', type='PNG', width=4000, network=442730)
+2022-02-27 16:48:38,970 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:38,970 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:38,970 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:48:38,987 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,480488]
+2022-02-27 16:48:38,987 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 480488]
+2022-02-27 16:48:38,987 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:38,988 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:38,988 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:38,988 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:48:38,999 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,480488]
+2022-02-27 16:48:39,000 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 480488]
+2022-02-27 16:48:39,000 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 16:48:39,000 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:39,000 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 16:48:39,010 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 16:48:39,010 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 16:48:39,010 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 16:48:39,010 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 16:48:39,010 [DEBUG] py4...: ǀCalling sandbox_get_file_info('C:\\Users\\depra\\AppData\\Local\\Temp\\tmpt03p8hn2\\480488.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:39,011 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="C:\\Users\\depra\\AppData\\Local\\Temp\\tmpt03p8hn2\\480488.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:39,011 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': 'C:\\Users\\depra\\AppData\\Local\\Temp\\tmpt03p8hn2\\480488.png'}
+2022-02-27 16:48:39,033 [DEBUG] py4...: ǀǀInternal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"The filename, directory name, or volume label syntax is incorrect","link":"file:/C:/Users/depra/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2022-02-27 16:48:39,033 [DEBUG] py4...: ǀǀ'commands_post' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:48:39,034 [DEBUG] py4...: ǀ'sandbox_get_file_info' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:48:39,034 [DEBUG] py4...: 'export_image' exception CyError('In commands_post(): The filename, directory name, or volume label syntax is incorrect')
+2022-02-27 16:48:39,034 [DEBUG] py4...: --------------------
+2022-02-27 16:48:39,035 [DEBUG] py4...: Calling delete_network(network=480488)
+2022-02-27 16:48:39,035 [DEBUG] py4...: ǀCalling get_network_suid(480488)
+2022-02-27 16:48:39,035 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 16:48:39,035 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 16:48:39,046 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,480488]
+2022-02-27 16:48:39,047 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 480488]
+2022-02-27 16:48:39,047 [DEBUG] py4...: ǀReturning 'get_network_suid': 480488
+2022-02-27 16:48:39,047 [DEBUG] py4...: ǀCalling cyrest_delete('networks/480488', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 16:48:39,048 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/480488)
+2022-02-27 16:48:39,562 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 16:48:39,562 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 16:48:39,562 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 16:48:39,563 [DEBUG] py4...: --------------------
+2022-02-27 17:22:27,673 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 17:22:27,688 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 17:22:27,694 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 17:22:35,642 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":485882,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 17:22:35,642 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 485882, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 17:22:35,646 [DEBUG] py4...: Returning 'import_network_from_ndex': 485882
+2022-02-27 17:22:35,647 [DEBUG] py4...: --------------------
+2022-02-27 17:22:35,647 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:22:35,648 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 17:22:35,668 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:22:35,670 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:22:35,670 [DEBUG] py4...: --------------------
+2022-02-27 17:22:35,780 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:22:35,781 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:22:35,799 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:22:35,800 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:22:35,800 [DEBUG] py4...: --------------------
+2022-02-27 17:22:35,801 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:22:35,801 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 17:22:35,828 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:22:35,828 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:22:35,829 [DEBUG] py4...: --------------------
+2022-02-27 17:22:35,938 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:22:35,938 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:22:36,066 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:22:36,067 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:22:36,067 [DEBUG] py4...: --------------------
+2022-02-27 17:22:41,074 [DEBUG] py4...: Calling export_image('485882.png', type='PNG', width=4000, network=442730)
+2022-02-27 17:22:41,074 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,077 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,077 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:22:41,101 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,485882]
+2022-02-27 17:22:41,102 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 485882]
+2022-02-27 17:22:41,102 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,102 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,103 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,103 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:22:41,123 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,485882]
+2022-02-27 17:22:41,124 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 485882]
+2022-02-27 17:22:41,124 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 17:22:41,124 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,124 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 17:22:41,145 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 17:22:41,145 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 17:22:41,146 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 17:22:41,146 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 17:22:41,146 [DEBUG] py4...: ǀCalling sandbox_get_file_info('485882.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,147 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="485882.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,149 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': '485882.png'}
+2022-02-27 17:22:41,180 [DEBUG] py4...: ǀǀOK[200], content: {
+ "data": {"filePath":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png","modifiedTime":"","isFile":false},
+ "errors":[]
+}
+2022-02-27 17:22:41,180 [DEBUG] py4...: ǀǀReturning 'commands_post': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:22:41,182 [DEBUG] py4...: ǀReturning 'sandbox_get_file_info': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:22:41,183 [DEBUG] py4...: ǀCalling commands_post('view export Width="4000" OutputFile="C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png" options="PNG" view="SUID:447221"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:41,184 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/view/export), json: {'Width': '4000', 'OutputFile': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png', 'options': 'PNG', 'view': 'SUID:447221'}
+2022-02-27 17:22:42,595 [DEBUG] py4...: ǀOK[200], content: {
+ "data": {"file":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png"},
+ "errors":[]
+}
+2022-02-27 17:22:42,595 [DEBUG] py4...: ǀReturning 'commands_post': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png'}
+2022-02-27 17:22:42,598 [DEBUG] py4...: Returning 'export_image': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\485882.png'}
+2022-02-27 17:22:42,598 [DEBUG] py4...: --------------------
+2022-02-27 17:22:42,618 [DEBUG] py4...: Calling delete_network(network=485882)
+2022-02-27 17:22:42,619 [DEBUG] py4...: ǀCalling get_network_suid(485882)
+2022-02-27 17:22:42,620 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:22:42,621 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:22:42,674 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,15004,442730,485882]
+2022-02-27 17:22:42,675 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 15004, 442730, 485882]
+2022-02-27 17:22:42,675 [DEBUG] py4...: ǀReturning 'get_network_suid': 485882
+2022-02-27 17:22:42,675 [DEBUG] py4...: ǀCalling cyrest_delete('networks/485882', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 17:22:42,675 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/485882)
+2022-02-27 17:22:43,535 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 17:22:43,536 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 17:22:43,536 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 17:22:43,536 [DEBUG] py4...: --------------------
+2022-02-27 17:26:53,638 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 17:26:53,640 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 17:26:53,642 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 17:26:59,328 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":491276,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 17:26:59,329 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 491276, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 17:26:59,329 [DEBUG] py4...: Returning 'import_network_from_ndex': 491276
+2022-02-27 17:26:59,329 [DEBUG] py4...: --------------------
+2022-02-27 17:26:59,330 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:26:59,330 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 17:26:59,369 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:26:59,369 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:26:59,370 [DEBUG] py4...: --------------------
+2022-02-27 17:26:59,484 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:26:59,485 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:26:59,528 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:26:59,528 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:26:59,529 [DEBUG] py4...: --------------------
+2022-02-27 17:26:59,529 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:26:59,529 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 17:26:59,569 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:26:59,569 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:26:59,569 [DEBUG] py4...: --------------------
+2022-02-27 17:26:59,682 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:26:59,683 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:26:59,717 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:26:59,717 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:26:59,717 [DEBUG] py4...: --------------------
+2022-02-27 17:27:04,724 [DEBUG] py4...: Calling export_image('491276.png', type='PNG', width=4000, network=442730)
+2022-02-27 17:27:04,725 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,725 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,725 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:27:04,737 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,491276,15004,442730]
+2022-02-27 17:27:04,737 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 491276, 15004, 442730]
+2022-02-27 17:27:04,737 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,738 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,740 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,740 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:27:04,751 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,458912,453518,448124,491276,15004,442730]
+2022-02-27 17:27:04,752 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 491276, 15004, 442730]
+2022-02-27 17:27:04,752 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 17:27:04,752 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,752 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 17:27:04,764 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 17:27:04,764 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 17:27:04,764 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 17:27:04,764 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 17:27:04,764 [DEBUG] py4...: ǀCalling sandbox_get_file_info('491276.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,765 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="491276.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,765 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': '491276.png'}
+2022-02-27 17:27:04,785 [DEBUG] py4...: ǀǀOK[200], content: {
+ "data": {"filePath":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png","modifiedTime":"","isFile":false},
+ "errors":[]
+}
+2022-02-27 17:27:04,785 [DEBUG] py4...: ǀǀReturning 'commands_post': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:27:04,786 [DEBUG] py4...: ǀReturning 'sandbox_get_file_info': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:27:04,786 [DEBUG] py4...: ǀCalling commands_post('view export Width="4000" OutputFile="C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png" options="PNG" view="SUID:447221"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:04,787 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/view/export), json: {'Width': '4000', 'OutputFile': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png', 'options': 'PNG', 'view': 'SUID:447221'}
+2022-02-27 17:27:05,568 [DEBUG] py4...: ǀOK[200], content: {
+ "data": {"file":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png"},
+ "errors":[]
+}
+2022-02-27 17:27:05,568 [DEBUG] py4...: ǀReturning 'commands_post': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png'}
+2022-02-27 17:27:05,569 [DEBUG] py4...: Returning 'export_image': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\491276.png'}
+2022-02-27 17:27:05,569 [DEBUG] py4...: --------------------
+2022-02-27 17:27:05,579 [DEBUG] py4...: Calling delete_network(network=491276)
+2022-02-27 17:27:05,580 [DEBUG] py4...: ǀCalling get_network_suid(491276)
+2022-02-27 17:27:05,580 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:27:05,580 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:27:05,597 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,448124,491276,15004,442730]
+2022-02-27 17:27:05,598 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 448124, 491276, 15004, 442730]
+2022-02-27 17:27:05,598 [DEBUG] py4...: ǀReturning 'get_network_suid': 491276
+2022-02-27 17:27:05,598 [DEBUG] py4...: ǀCalling cyrest_delete('networks/491276', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 17:27:05,598 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/491276)
+2022-02-27 17:27:06,785 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 17:27:06,786 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 17:27:06,786 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 17:27:06,786 [DEBUG] py4...: --------------------
+2022-02-27 17:41:27,994 [DEBUG] py4...: Calling import_network_from_ndex('9a8f5326-aa6e-11ea-aaef-0ac135e8bacf')
+2022-02-27 17:41:28,004 [DEBUG] py4...: ǀCalling cyrest_post('networks', body={'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, base_url='http://127.0.0.1:1234/cyndex2/v1')
+2022-02-27 17:41:28,008 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/cyndex2/v1/networks), json: {'serverUrl': 'http://ndexbio.org/v2', 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}
+2022-02-27 17:41:35,430 [DEBUG] py4...: ǀOK[200], content: {"data":{"suid":496670,"uuid":"9a8f5326-aa6e-11ea-aaef-0ac135e8bacf"},"errors":[]}
+2022-02-27 17:41:35,430 [DEBUG] py4...: ǀReturning 'cyrest_post': {'data': {'suid': 496670, 'uuid': '9a8f5326-aa6e-11ea-aaef-0ac135e8bacf'}, 'errors': []}
+2022-02-27 17:41:35,431 [DEBUG] py4...: Returning 'import_network_from_ndex': 496670
+2022-02-27 17:41:35,431 [DEBUG] py4...: --------------------
+2022-02-27 17:41:35,432 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'WEST', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:41:35,433 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'WEST', 'state': 'DOCK'}]
+2022-02-27 17:41:35,466 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:41:35,467 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:41:35,467 [DEBUG] py4...: --------------------
+2022-02-27 17:41:35,587 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:41:35,588 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:41:35,802 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:41:35,803 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:41:35,803 [DEBUG] py4...: --------------------
+2022-02-27 17:41:35,803 [DEBUG] py4...: Calling cyrest_put('ui/panels', body=[{'name': 'SOUTH', 'state': 'DOCK'}], require_json=False)
+2022-02-27 17:41:35,804 [DEBUG] py4...: HTTP PUT(http://127.0.0.1:1234/v1/ui/panels), json: [{'name': 'SOUTH', 'state': 'DOCK'}]
+2022-02-27 17:41:35,849 [DEBUG] py4...: OK[200], content: 
+2022-02-27 17:41:35,849 [DEBUG] py4...: Returning 'cyrest_put': ''
+2022-02-27 17:41:35,849 [DEBUG] py4...: --------------------
+2022-02-27 17:41:35,952 [DEBUG] py4...: Calling cyrest_get('ui/panels', require_json=True)
+2022-02-27 17:41:35,952 [DEBUG] py4...: HTTP GET(http://127.0.0.1:1234/v1/ui/panels)
+2022-02-27 17:41:35,981 [DEBUG] py4...: OK[200], content: [{"name":"SOUTH","state":"DOCK"},{"name":"EAST","state":"HIDE"},{"name":"WEST","state":"DOCK"},{"name":"SOUTH_WEST","state":"HIDE"}]
+2022-02-27 17:41:35,981 [DEBUG] py4...: Returning 'cyrest_get': [{'name': 'SOUTH', 'state': 'DOCK'}, {'name': 'EAST', 'state': 'HIDE'}, {'name': 'WEST', 'state': 'DOCK'}, {'name': 'SOUTH_WEST', 'state': 'HIDE'}]
+2022-02-27 17:41:35,982 [DEBUG] py4...: --------------------
+2022-02-27 17:41:40,985 [DEBUG] py4...: Calling export_image('496670.png', type='PNG', width=4000, network=442730)
+2022-02-27 17:41:40,986 [DEBUG] py4...: ǀCalling get_network_view_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:40,986 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:40,986 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:41:41,006 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,496670,448124,15004,442730]
+2022-02-27 17:41:41,007 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 496670, 448124, 15004, 442730]
+2022-02-27 17:41:41,007 [DEBUG] py4...: ǀǀCalling get_network_views(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,008 [DEBUG] py4...: ǀǀǀCalling get_network_suid(442730, base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,008 [DEBUG] py4...: ǀǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,008 [DEBUG] py4...: ǀǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:41:41,027 [DEBUG] py4...: ǀǀǀǀOK[200], content: [39156,197,458912,453518,496670,448124,15004,442730]
+2022-02-27 17:41:41,027 [DEBUG] py4...: ǀǀǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 496670, 448124, 15004, 442730]
+2022-02-27 17:41:41,028 [DEBUG] py4...: ǀǀǀReturning 'get_network_suid': 442730
+2022-02-27 17:41:41,028 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks/442730/views', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,028 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/442730/views)
+2022-02-27 17:41:41,051 [DEBUG] py4...: ǀǀǀOK[200], content: [447221]
+2022-02-27 17:41:41,051 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [447221]
+2022-02-27 17:41:41,052 [DEBUG] py4...: ǀǀReturning 'get_network_views': [447221]
+2022-02-27 17:41:41,052 [DEBUG] py4...: ǀReturning 'get_network_view_suid': 447221
+2022-02-27 17:41:41,052 [DEBUG] py4...: ǀCalling sandbox_get_file_info('496670.png', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,052 [DEBUG] py4...: ǀǀCalling commands_post('filetransfer getFileInfo sandboxName="default_sandbox" fileName="496670.png"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,053 [DEBUG] py4...: ǀǀHTTP POST(http://127.0.0.1:1234/v1/commands/filetransfer/getFileInfo), json: {'sandboxName': 'default_sandbox', 'fileName': '496670.png'}
+2022-02-27 17:41:41,092 [DEBUG] py4...: ǀǀOK[200], content: {
+ "data": {"filePath":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png","modifiedTime":"","isFile":false},
+ "errors":[]
+}
+2022-02-27 17:41:41,092 [DEBUG] py4...: ǀǀReturning 'commands_post': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:41:41,093 [DEBUG] py4...: ǀReturning 'sandbox_get_file_info': {'filePath': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png', 'modifiedTime': '', 'isFile': False}
+2022-02-27 17:41:41,094 [DEBUG] py4...: ǀCalling commands_post('view export Width="4000" OutputFile="C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png" options="PNG" view="SUID:447221"', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:41,095 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/view/export), json: {'Width': '4000', 'OutputFile': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png', 'options': 'PNG', 'view': 'SUID:447221'}
+2022-02-27 17:41:41,861 [DEBUG] py4...: ǀOK[200], content: {
+ "data": {"file":"C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png"},
+ "errors":[]
+}
+2022-02-27 17:41:41,862 [DEBUG] py4...: ǀReturning 'commands_post': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png'}
+2022-02-27 17:41:41,862 [DEBUG] py4...: Returning 'export_image': {'file': 'C:\\Users\\depra\\CytoscapeConfiguration\\filetransfer\\default_sandbox\\496670.png'}
+2022-02-27 17:41:41,862 [DEBUG] py4...: --------------------
+2022-02-27 17:41:46,228 [DEBUG] py4...: Calling delete_network(network=496670)
+2022-02-27 17:41:46,236 [DEBUG] py4...: ǀCalling get_network_suid(496670)
+2022-02-27 17:41:46,236 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2022-02-27 17:41:46,236 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2022-02-27 17:41:46,256 [DEBUG] py4...: ǀǀOK[200], content: [39156,197,458912,453518,496670,448124,15004,442730]
+2022-02-27 17:41:46,256 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [39156, 197, 458912, 453518, 496670, 448124, 15004, 442730]
+2022-02-27 17:41:46,257 [DEBUG] py4...: ǀReturning 'get_network_suid': 496670
+2022-02-27 17:41:46,257 [DEBUG] py4...: ǀCalling cyrest_delete('networks/496670', base_url='http://127.0.0.1:1234/v1', require_json=False)
+2022-02-27 17:41:46,257 [DEBUG] py4...: ǀHTTP DELETE(http://127.0.0.1:1234/v1/networks/496670)
+2022-02-27 17:41:47,264 [DEBUG] py4...: ǀOK[200], content: 
+2022-02-27 17:41:47,265 [DEBUG] py4...: ǀReturning 'cyrest_delete': ''
+2022-02-27 17:41:47,265 [DEBUG] py4...: Returning 'delete_network': ''
+2022-02-27 17:41:47,265 [DEBUG] py4...: --------------------
