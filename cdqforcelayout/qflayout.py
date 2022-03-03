@@ -3,9 +3,11 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-from cdqforcelayout import qfnetwork
+#from cdqforcelayout import qfnetwork
+import qfnetwork
 from math import sqrt
-from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+#from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+from qfields import repulsion_field, attraction_field, add_field, subtract_field
 import logging
 
 
@@ -13,12 +15,21 @@ logger = logging.getLogger(__name__)
 
 
 class QFLayout:
-    def __init__(self, qfnetwork, sparsity=30, r_radius=4, 
+    def __init__(self, qfnetwork, sparsity=30, r_radius=10, 
                         a_radius=10, r_scale=10, a_scale=5, center_attractor_scale=0.01,
-                        initialize_coordinates=True, dtype=np.int16):
+                        initialize_coordinates="center", dtype=np.int16):
         self.integer_type = dtype
         self.network = qfnetwork
-        self.gameboard = self._make_gameboard(sparsity, center_attractor_scale)
+        
+        self.gameboard, center = self._make_gameboard(sparsity, center_attractor_scale)
+
+        if initialize_coordinates is "center":
+            print("init at center")
+            self.network.place_nodes_at_center(center)
+        elif initialize_coordinates is "random":
+            print("init random")
+            self.network.place_nodes_randomly(self.gameboard.shape[0])
+
         self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
         self.a_field_med = attraction_field(a_radius, a_scale*5, self.integer_type)
@@ -44,21 +55,22 @@ class QFLayout:
         add_field(attraction_field(center_attractor_radius, center_attractor_scale, self.integer_type),
               board,
               center, center)
-        return board
+        return board, center
 
     # update the position of one node
     def layout_one_node(self, node):
         # clear the scratchpad
         self.s_field[...]=0
-        rank = len(list(node['adj']))     
+        #degree = len(list(node['adj']))
+        degree = node["degree"]   
         for adj_node_id in node['adj']:
             # if the adjacent node has coordinates,
             # add its attraction field to the scratchpad field
             adj_node = self.network.node_dict[adj_node_id]
             if adj_node.get("x"):
-                if rank == 1:
+                if degree == 1:
                     add_field(self.a_field_high, self.s_field, adj_node["x"], adj_node["y"])
-                elif rank < 5:
+                elif degree < 5:
                     add_field(self.a_field_med, self.s_field, adj_node["x"], adj_node["y"])
                 else:
                     add_field(self.a_field, self.s_field, adj_node["x"], adj_node["y"])
