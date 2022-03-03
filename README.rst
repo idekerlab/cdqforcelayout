@@ -1,9 +1,9 @@
 ===================================================
-CDAPS IGraph_ layout
+CDAPS QForce layout
 ===================================================
 
 This CDAPS container runnable by the CDAPS_ REST service allows caller to add
-IGraph_ layouts to networks in CX_ format used by NDEx_
+QForce layout to networks in CX_ format used by NDEx_
 
 Dependencies
 ------------
@@ -19,20 +19,20 @@ To build the Docker_ container run the following:
 
 .. code-block::
 
-   git clone https://github.com/idekerlab/cdigraphlayout
-   cd cdigraphlayout
+   git clone https://github.com/idekerlab/cdqforcelayout
+   cd cdqforcelayout
    make dockerbuild
 
 To build a pip_ installable package run the following:
 
 .. code-block::
 
-    git clone https://github.com/idekerlab/cdigraphlayout
-    cd cdigraphlayout
+    git clone https://github.com/idekerlab/cdqforcelayout
+    cd cdqforcelayout
     make dist
 
     # to install
-    pip install dist/cdigraphlayout*whl
+    pip install dist/cdqforcelayout*whl
 
 
 Run **make** command with no arguments to see other build/deploy options including creation of Docker image
@@ -78,7 +78,7 @@ to standard out is the cartesianLayout_ aspect.
 .. code-block::
 
     wget https://www.ndexbio.org/v2/network/36ac0907-78c3-11e8-a4bf-0ac135e8bacf
-    docker run --rm -v `pwd`:`pwd` coleslawndex/cdigraphlayout:0.0.1 `pwd`/36ac0907-78c3-11e8-a4bf-0ac135e8bacf
+    docker run --rm -v `pwd`:`pwd` coleslawndex/cdqforcelayout:0.0.1 `pwd`/36ac0907-78c3-11e8-a4bf-0ac135e8bacf
 
 **Example Output:**
 
@@ -104,6 +104,5 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 .. _cartesianLayout: https://home.ndexbio.org/data-model/#cart_layout
 .. _Docker: https://www.docker.com/
 .. _pip: https://pypi.org/project/pip/
-.. _IGraph: https://igraph.org/python/
 .. _CX: https://home.ndexbio.org/data-model/
 .. _CDAPS: https://cdaps.readthedocs.io
