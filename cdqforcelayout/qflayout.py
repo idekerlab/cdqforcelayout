@@ -3,10 +3,13 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-import qfnetwork
+from cdqforcelayout import qfnetwork
 from math import sqrt
-from qfields import repulsion_field, attraction_field, add_field, subtract_field
-from timeit import default_timer as timer
+from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class QFLayout:
@@ -73,8 +76,8 @@ class QFLayout:
         # version of the array
         # unravel_index turns the index back into the coordinates
         destination = np.unravel_index(np.argmin(self.gameboard, axis=None), self.s_field.shape)
-        #print(node)
-        #print("destination: ", destination)
+        logger.debug(str(node))
+        logger.debug('destination: ' + str(destination))
 
         # add it at the destination
         add_field(self.r_field, self.gameboard, destination[0], destination[1])
@@ -97,10 +100,12 @@ class QFLayout:
         # perform the rounds of layout
         #start = timer()
         for n in range(0, rounds):
-            # print("round ", n)
+            logger.debug('round ' + str(n))
             for node in node_list:
                 degree = node.get("degree")
-                if n > 1 or degree > 1:
+                # only layout the degree 1 nodes on the last
+                # round
+                if degree > 1 or n >= (rounds-1):
                     self.layout_one_node(node)
 
         #end = timer()

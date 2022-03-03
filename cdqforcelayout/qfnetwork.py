@@ -10,6 +10,10 @@
 import numpy as np
 from operator import itemgetter
 from random import randint
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 class QFNetwork:
@@ -17,7 +21,8 @@ class QFNetwork:
     def __init__(self, edge_array, name="unnamed network") -> None:
         self.node_dict = {}
         for edge in edge_array:
-            # print(edge[0], " ", edge[1])
+            if logger.isEnabledFor(logging.DEBUG):
+                logger.debug(str(edge[0]) + ' ' + str(edge[1]))
             if edge[0] not in self.node_dict:
                 self.node_dict[edge[0]] = {"adj":set()}
             self.node_dict[edge[0]]["adj"].add(edge[1])
@@ -30,7 +35,7 @@ class QFNetwork:
     @classmethod
     def from_nicecx(cls, nicecx):
         edge_array = np.zeros((len(nicecx.get_edges()), 2), dtype=int)
-        #print("edge array: ", edge_array.shape)
+        logger.debug("edge array: " + str(edge_array.shape))
         i = 0
         for edge_id, edge in nicecx.get_edges():
             edge_array[i, 0] = edge["s"]
@@ -62,15 +67,16 @@ class QFNetwork:
             node["y"] = y
 
     def place_nodes_at_center(self, center):
-        for node_id,node in self.node_dict.items():
+        for node_id, node in self.node_dict.items():
             node["x"] = center
             node["y"] = center
 
-    def get_cx_layout(self, node_dimension = 40):
+    def get_cx_layout(self, node_dimension=40):
         cx_layout = []
         for node_id, node in self.node_dict.items():
-            cx_node = {"node": node_id,
-                     "x": node["x"] * node_dimension,
-                     "y": node["y"] * node_dimension}
+            logger.debug('nodeid: ' + str(node_id) + ' node: ' + str(node))
+            cx_node = {"node": int(node_id),
+                       "x": int(node["x"] * node_dimension),
+                       "y": int(node["y"] * node_dimension)}
             cx_layout.append(cx_node)
         return cx_layout
