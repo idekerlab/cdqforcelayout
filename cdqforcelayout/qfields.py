@@ -1,5 +1,10 @@
 import numpy as np
 from math import sqrt
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 
 # Adding fields:
 # The two fields are combined at an x-y offset, destructively modifying the target field
@@ -17,13 +22,16 @@ def add_field(source_field, target_field, x, y, remove=False, show_node_dict=Fal
     #
     x_offset = int(source_field.shape[0]/2)
     y_offset = int(source_field.shape[1]/2)
-    #print("gb shape", target_field.shape)
-    #print("rf offset", x_offset, y_offset)
+    logger.debug("gb shape " + str(target_field.shape))
+    logger.debug("rf offset " + str(x_offset) + ' ' + str(y_offset))
     target_top_x = x - x_offset
     target_top_y = y - y_offset
     target_bottom_x = x + x_offset
     target_bottom_y = y + y_offset
-    #print("gb target", target_top_x,target_top_y,target_bottom_x,target_bottom_y)
+    logger.debug('gb target ' + str(target_top_x) +
+                 ' ' + str(target_top_y) + ' ' +
+                 str(target_bottom_x) + ' ' +
+                 str(target_bottom_y))
     source_top_x = 0
     source_top_y = 0
     source_bottom_x = source_x_max
@@ -31,25 +39,28 @@ def add_field(source_field, target_field, x, y, remove=False, show_node_dict=Fal
     #print("rf source", source_top_x,source_top_y,source_bottom_x,source_bottom_y)
     # trim if source_field goes off board negative
     if target_top_x < 0:
-        #print("negative x")
+        logger.debug("negative x")
         source_top_x = -target_top_x
         target_top_x = 0        
     if target_top_y < 0:
-        #print("negative y")
+        logger.debug("negative y")
         source_top_y = -target_top_y
         target_top_y = 0
     # trim if source_field goes off board positive
     if target_bottom_x > target_x_max:
         dx = target_bottom_x - target_x_max
-        #print("positive x", dx)
+        logger.debug("positive x", dx)
         target_bottom_x = target_x_max
         source_bottom_x = source_x_max - dx
     if target_bottom_y > target_y_max:
         dy = target_bottom_y - target_y_max
-        #print("positive y", dy)
+        logger.debug("positive y " + str(dy))
         target_bottom_y = target_y_max
         source_bottom_y = source_y_max - dy
-    #print("adj gb target", target_top_x,target_top_y,target_bottom_x,target_bottom_y) 
+    logger.debug("adj gb target" + ' ' + str(target_top_x) + ' ' +
+                 str(target_top_y) + ' ' +
+                 str(target_bottom_x) + ' ' +
+                 str(target_bottom_y))
     #print("adj rf source", source_top_x,source_top_y,source_bottom_x,source_bottom_y)
     #gameboard[target_top_x, target_top_y] = 1
     #gameboard[target_bottom_x, target_bottom_y] = 1

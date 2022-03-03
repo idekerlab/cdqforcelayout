@@ -6,16 +6,23 @@ import argparse
 import traceback
 import json
 import logging
-from contextlib2 import redirect_stdout
+from contextlib import redirect_stdout
 
 import ndex2
-import qflayout
+from cdqforcelayout import qflayout
 
-logger = logging.getLogger(__name__)
+
+logger = logging.getLogger('cdqforcelayout.cdqforcelayoutcmd')
+
+
+LOG_FORMAT = "%(asctime)-15s %(levelname)s %(relativeCreated)dms " \
+             "%(filename)s::%(funcName)s():%(lineno)d %(message)s"
+
 
 class Formatter(argparse.ArgumentDefaultsHelpFormatter,
                 argparse.RawDescriptionHelpFormatter):
     pass
+
 
 def _parse_arguments(desc, args):
     """
@@ -38,7 +45,48 @@ def _parse_arguments(desc, args):
                         help='Layout algorithm to use. '
                              'so far, there is only the default'
                             )
+    parser.add_argument('--rounds', default=3, type=int,
+                        help='Number of layout iterations')
+    parser.add_argument('--verbose', '-v', action='count', default=0,
+                        help='Increases verbosity of logger to standard '
+                             'error for log messages in this module and '
+                             '. Messages are '
+                             'output at these python logging levels '
+                             '-v = ERROR, -vv = WARNING, -vvv = INFO, '
+                             '-vvvv = DEBUG, -vvvvv = NOTSET (default is to '
+                             'log CRITICAL)')
+    parser.add_argument('--logconf', default=None,
+                        help='Path to python logging configuration file in '
+                             'format consumable by fileConfig. See '
+                             'https://docs.python.org/3/library/logging.html '
+                             'for more information. '
+                             'Setting this overrides -v|--verbose parameter '
+                             'which uses default logger. (default None)')
     return parser.parse_args(args)
+
+
+def _setup_logging(args):
+    """
+    Sets up logging based on parsed command line arguments.
+    If args.logconf is set use that configuration otherwise look
+    at args.verbose and set logging for this module and the one
+    in ndexutil specified by TSV2NICECXMODULE constant
+    :param args: parsed command line arguments from argparse
+    :raises AttributeError: If args is None or args.logconf is None
+    :return: None
+    """
+
+    if args.logconf is None:
+        level = (50 - (10 * args.verbose))
+        logging.basicConfig(format=LOG_FORMAT,
+                            level=level)
+        logger.setLevel(level)
+        return
+
+    # logconf was set use that file
+    logging.config.fileConfig(args.logconf,
+                              disable_existing_loggers=False)
+
 
 def run_layout(theargs, out_stream=sys.stdout,
                err_stream=sys.stderr):
@@ -67,12 +115,14 @@ def run_layout(theargs, out_stream=sys.stdout,
         with redirect_stdout(sys.stderr):
             net = ndex2.create_nice_cx_from_file(theargs.input)
             qfl = qflayout.QFLayout.from_nicecx(net)
-            new_layout = qfl.do_layout()
+            new_layout = qfl.do_layout(rounds=theargs.rounds)
             # write value of cartesianLayout aspect to output stream
+            logger.debug(str(new_layout))
             json.dump(new_layout, out_stream)
         return 0
     except Exception as e:
-        err_stream.write(str(e))
+        err_stream.write('Caught exception: ' + str(e) + '\n')
+        traceback.print_exc()
         return 5
     finally:
         err_stream.flush()
@@ -89,16 +139,10 @@ def main(args):
     desc = """
     Runs qforce layout on command line, sending cartesianLayout aspect
     to standard out.
-    
-    NOTE: If neither, --scale or --fit_into are set then the layout
-          coordinates are set to fit into the box where upper left
-          corner is 0,0 and lower right corner is {DEF_BS},{DEF_BS} or 
-          sqrt(size of node squared x number of nodes) where
-          size of node is obtained from cyVisualProperties aspect
-          or set to DEF_NS if not found. 
     """
     theargs = _parse_arguments(desc, args[1:])
     try:
+        _setup_logging(theargs)
         return run_layout(theargs, sys.stdout, sys.stderr)
     except Exception as e:
         sys.stderr.write('\n\nCaught exception: ' + str(e))
