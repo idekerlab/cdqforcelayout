@@ -30,7 +30,7 @@ class QFLayout:
             print("init random")
             self.network.place_nodes_randomly(self.gameboard.shape[0])
 
-        self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
+        self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=False)
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
         self.a_field_med = attraction_field(a_radius, a_scale*5, self.integer_type)
         self.a_field_high = attraction_field(a_radius, a_scale*30, self.integer_type)
