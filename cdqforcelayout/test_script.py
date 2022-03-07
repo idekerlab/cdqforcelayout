@@ -4,7 +4,7 @@ import ndex2
 import json
 
 from numpy import int32
-import qflayout
+from . import qflayout
 
 NDEXUSER = "dexterpratt"
 NDEXPASSWORD = "cytoscaperules"
