@@ -2,6 +2,8 @@ import os
 import sys
 import ndex2
 import json
+
+from numpy import int32
 import qflayout
 
 NDEXUSER = "dexterpratt"
@@ -31,7 +33,7 @@ print(ncipid_files)#
 
 def layout(network):
     qfl = qflayout.QFLayout.from_nicecx(network,initialize_coordinates="center", sparsity=30, r_radius=10, 
-                        a_radius=20, r_scale=7, a_scale=5, center_attractor_scale=0.02)
+                        a_radius=40, r_scale=7, a_scale=5, center_attractor_scale=0.02, dtype=int)
     new_layout = qfl.do_layout(rounds=10)
     network.set_opaque_aspect(ndex2.constants.CARTESIAN_LAYOUT_ASPECT, new_layout)
 

@@ -22,18 +22,19 @@ class QFLayout:
         self.network = qfnetwork
         
         self.gameboard, center = self._make_gameboard(sparsity, center_attractor_scale)
+        self.gameboard_mask = np.zeros(self.gameboard.shape, dtype=self.integer_type)
 
-        if initialize_coordinates is "center":
+        if initialize_coordinates == "center":
             print("init at center")
             self.network.place_nodes_at_center(center)
-        elif initialize_coordinates is "random":
+        elif initialize_coordinates == "random":
             print("init random")
             self.network.place_nodes_randomly(self.gameboard.shape[0])
 
-        self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=False)
+        self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
         self.a_field_med = attraction_field(a_radius, a_scale*5, self.integer_type)
-        self.a_field_high = attraction_field(a_radius, a_scale*30, self.integer_type)
+        self.a_field_high = attraction_field(a_radius, a_scale*10, self.integer_type)
         # make a scratchpad board where we add all the attraction fields
         # and the use it to update the gameboard
         self.s_field = np.zeros(self.gameboard.shape, self.integer_type)
@@ -59,67 +60,100 @@ class QFLayout:
 
     # update the position of one node
     def layout_one_node(self, node):
+        # remove the node from the gameboard by subtracting it at its current location
+        # also set that location of the gameboard_mask to zero
+        subtract_field(self.r_field, self.gameboard, node['x'], node['y'])
+        #self.gameboard[node['x'], node['y']] = 32768 # 
+        self.gameboard_mask[node['x'], node["y"]] = 0
+
         # clear the scratchpad
         self.s_field[...]=0
-        #degree = len(list(node['adj']))
+        # add the attractions to the scratchpad
         degree = node["degree"]   
         for adj_node_id in node['adj']:
-            # if the adjacent node has coordinates,
-            # add its attraction field to the scratchpad field
+            # add an attraction field to the scratchpad field
+            # where lower degree nodes have higher attractions
             adj_node = self.network.node_dict[adj_node_id]
-            if adj_node.get("x"):
-                if degree == 1:
-                    add_field(self.a_field_high, self.s_field, adj_node["x"], adj_node["y"])
-                elif degree < 5:
-                    add_field(self.a_field_med, self.s_field, adj_node["x"], adj_node["y"])
-                else:
-                    add_field(self.a_field, self.s_field, adj_node["x"], adj_node["y"])
+            if degree == 1:
+                add_field(self.a_field_high, self.s_field, adj_node["x"], adj_node["y"])
+            elif degree < 5:
+                add_field(self.a_field_med, self.s_field, adj_node["x"], adj_node["y"])
+            else:
+                add_field(self.a_field, self.s_field, adj_node["x"], adj_node["y"])
                 
         # add s_field to the gameboard
-        self.gameboard += self.s_field
-        # if the node has coordinates
-        # remove it from the gameboard by subtracting it at its current location
-        if node.get("x"):
-            subtract_field(self.r_field, self.gameboard, node['x'], node['y'])
+        self.gameboard += self.s_field     
         
         # select the destination
         # idea #1: choose a location with the minimum value
-        # argmin returns the index of the first location containing the minimum value in a flattened 
-        # version of the array
+        # argmin returns the index of the first location containing
+        # the minimum value in a flattened version of the array
         # unravel_index turns the index back into the coordinates
         destination = np.unravel_index(np.argmin(self.gameboard, axis=None), self.s_field.shape)
-        logger.debug(str(node))
-        logger.debug('destination: ' + str(destination))
 
-        # add it at the destination
-        add_field(self.r_field, self.gameboard, destination[0], destination[1])
-        
-        # subtract the s_field to revert the gameboard to just the repulsions
+        # minima = np.where(self.gameboard == self.gameboard.min())
+        # coords = zip(minima[0], minima[1])
+        # # default to the first minima
+        # destination = None
+        # for coord in coords:
+        #     # find a coordinate that is not already taken
+        #     if self.gameboard_mask[coord[0], coord[1]] == 0:
+        #         destination = coord
+        #         break
+
+        if True: #self.gameboard_mask[destination[0], destination[1]] == 0:
+
+        #if destination != None:
+            # the destination is free, put the node there
+            # update the node's coordinates
+            node["x"] = destination[0]
+            node["y"] = destination[1]            
+
+            # add the node's repulsion field at the destination and update the mask
+            add_field(self.r_field, self.gameboard, destination[0], destination[1])
+            self.gameboard_mask[destination[0], destination[1]] = 1
+        else:
+            # Skip this round. put the r_field back and reset the mask
+            add_field(self.r_field, self.gameboard, node['x'], node['y'])
+            self.gameboard_mask[node['x'], node["y"]] = 1
+
+        # in both cases, subtract the s_field to revert the gameboard to just the repulsions
         self.gameboard -= self.s_field
-        
-        # update the node's coordinates
-        node["x"] = destination[0]
-        node["y"] = destination[1] 
+
+
+        # # in the rare case in which all the minima are taken, 
+        # # give up and place the node on top of another
+        # # If it was important, we could add a search around the 
+        # # coordinate to find the nearest empty spot, but 
+        # # if we reduce this to an edge case its ok.
+
+        # if destination == None:
+        #     print("no free minimum found for node ")
+
+
+
+
 
     def do_layout(self, rounds=1):
         node_list = self.network.get_sorted_nodes()
 
-        # if a node does not have coordinates, don't add its repulsion field
+        # initialize the repulsion field and the mask
         for node in node_list:  
-            if node.get("x"):
-                add_field(self.r_field, self.gameboard, node["x"], node["y"])
+            add_field(self.r_field, self.gameboard, node["x"], node["y"])
+            self.gameboard_mask[node["x"], node["y"]] = 1
+
                 
         # perform the rounds of layout
-        #start = timer()
+        # start = timer()
         for n in range(0, rounds):
             logger.debug('round ' + str(n))
             for node in node_list:
-                degree = node.get("degree")
+                #degree = node.get("degree")
                 # only layout the degree 1 nodes on the last
                 # round
-                if degree > 1 or n >= (rounds-1):
-                    self.layout_one_node(node)
+                #if degree > 1 or n >= (rounds-1):
+                self.layout_one_node(node)
 
-        #end = timer()
-        #print("layout time = ", end - start)
+        # end = timer()
+        # print("layout time = ", end - start)
         return self.network.get_cx_layout()
