@@ -3,11 +3,9 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-#from cdqforcelayout import qfnetwork
-import qfnetwork
+from . import qfnetwork
 from math import sqrt
-#from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
-from qfields import repulsion_field, attraction_field, add_field, subtract_field
+from .qfields import repulsion_field, attraction_field, add_field, subtract_field
 import logging
 
 
@@ -25,10 +23,10 @@ class QFLayout:
         self.gameboard_mask = np.zeros(self.gameboard.shape, dtype=self.integer_type)
 
         if initialize_coordinates == "center":
-            print("init at center")
+            logger.debug("init at center")
             self.network.place_nodes_at_center(center)
         elif initialize_coordinates == "random":
-            print("init random")
+            logger.debug("init random")
             self.network.place_nodes_randomly(self.gameboard.shape[0])
 
         self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
