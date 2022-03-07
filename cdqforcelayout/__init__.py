@@ -2,4 +2,4 @@
 
 __author__ = 'Dexter Pratt'
 __email__ = 'depratt@health.ucsd.edu'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
