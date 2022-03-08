@@ -45,8 +45,23 @@ def _parse_arguments(desc, args):
                         help='Layout algorithm to use. '
                              'so far, there is only the default'
                             )
-    parser.add_argument('--rounds', default=3, type=int,
+    parser.add_argument('--rounds', default=10, type=int,
                         help='Number of layout iterations')
+    parser.add_argument('--sparsity', default=30, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--a_radius', default=40, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--r_radius', default=10, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--r_scale', default=7, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--a_scale', default=5, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--center_attractor_scale', default=0.02, type=float,
+                        help='TODO, please fill out')
+    parser.add_argument('--initialize_coordinates', choices=['center', 'random'],
+                        default='center',
+                        help='TODO, please fill out')
     parser.add_argument('--verbose', '-v', action='count', default=0,
                         help='Increases verbosity of logger to standard '
                              'error for log messages in this module and '
@@ -114,7 +129,13 @@ def run_layout(theargs, out_stream=sys.stdout,
     try:
         with redirect_stdout(sys.stderr):
             net = ndex2.create_nice_cx_from_file(theargs.input)
-            qfl = qflayout.QFLayout.from_nicecx(net)
+            qfl = qflayout.QFLayout.from_nicecx(net,
+                                                initialize_coordinates=theargs.initialize_coordinates,
+                                                sparsity=theargs.sparsity,
+                                                a_radius=theargs.a_radius,
+                                                r_scale=theargs.r_scale,
+                                                a_scale=theargs.a_scale,
+                                                center_attractor_scale=theargs.center_attractor_scale)
             new_layout = qfl.do_layout(rounds=theargs.rounds)
             # write value of cartesianLayout aspect to output stream
             logger.debug(str(new_layout))
