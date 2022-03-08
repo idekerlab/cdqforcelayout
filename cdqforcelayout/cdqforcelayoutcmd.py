@@ -7,6 +7,7 @@ import traceback
 import json
 import logging
 from contextlib import redirect_stdout
+import numpy as np
 
 import ndex2
 from cdqforcelayout import qflayout
@@ -135,7 +136,8 @@ def run_layout(theargs, out_stream=sys.stdout,
                                                 a_radius=theargs.a_radius,
                                                 r_scale=theargs.r_scale,
                                                 a_scale=theargs.a_scale,
-                                                center_attractor_scale=theargs.center_attractor_scale)
+                                                center_attractor_scale=theargs.center_attractor_scale,
+                                                dtype=np.int)
             new_layout = qfl.do_layout(rounds=theargs.rounds)
             # write value of cartesianLayout aspect to output stream
             logger.debug(str(new_layout))
