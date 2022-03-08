@@ -51,6 +51,8 @@ def _parse_arguments(desc, args):
                         help='TODO, please fill out')
     parser.add_argument('--a_radius', default=40, type=int,
                         help='TODO, please fill out')
+    parser.add_argument('--r_radius', default=10, type=int,
+                        help='TODO, please fill out')
     parser.add_argument('--r_scale', default=7, type=int,
                         help='TODO, please fill out')
     parser.add_argument('--a_scale', default=5, type=int,
