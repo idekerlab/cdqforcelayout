@@ -4,9 +4,15 @@ import ndex2
 import json
 from numpy import int32
 
-# this path insert enables one to invoke this
-# script from this directory and use the other
-# modules in the cdqforcelayout package
+# the sys.path.insert enables invocation of this
+# script from this directory and allows usage the other
+# modules in this cdqforcelayout package
+#
+# WARNING: If cdqforcelayout is pip installed and this
+#          script is called, this script may use
+#          the installed modules instead of these.
+#          YOU HAVE BEEN WARNED
+#
 sys.path.insert(0, os.path.abspath('../'))
 
 from cdqforcelayout import qflayout
