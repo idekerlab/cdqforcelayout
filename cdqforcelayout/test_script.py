@@ -2,9 +2,21 @@ import os
 import sys
 import ndex2
 import json
-
 from numpy import int32
-from . import qflayout
+
+# the sys.path.insert enables invocation of this
+# script from this directory and allows usage the other
+# modules in this cdqforcelayout package
+#
+# WARNING: If cdqforcelayout is pip installed and this
+#          script is called, this script may use
+#          the installed modules instead of these.
+#          YOU HAVE BEEN WARNED
+#
+sys.path.insert(0, os.path.abspath('../'))
+
+from cdqforcelayout import qflayout
+
 
 NDEXUSER = "dexterpratt"
 NDEXPASSWORD = "cytoscaperules"
@@ -16,11 +28,11 @@ def upload_network(cx_network):
     print("Network's URL (click to view!): " + SERVER + "/viewer/networks/" + url)
 
 def load_test_cx(filename):
-    parent_dir = os.path.dirname(os.path.dirname(__file__))
+    parent_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
     path = os.path.join(parent_dir, "tests", "data", filename)
     return ndex2.create_nice_cx_from_file(path)
 
-parent_dir = os.path.dirname(os.path.dirname(__file__))
+parent_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 ncipid_path = os.path.join(parent_dir, "tests", "ncipid")
 ncipid_files = [f for f in os.listdir(ncipid_path) if os.path.isfile(os.path.join(ncipid_path, f))]
 ncipid_networks = []

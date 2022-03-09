@@ -3,9 +3,9 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-from . import qfnetwork
+from cdqforcelayout import qfnetwork
 from math import sqrt
-from .qfields import repulsion_field, attraction_field, add_field, subtract_field
+from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
 import logging
 
 
