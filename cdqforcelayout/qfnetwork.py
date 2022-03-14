@@ -7,6 +7,7 @@
 # name
 # the node dict is sorted by degree
 # the edges are a pandas dataframe
+from itertools import count
 import numpy as np
 from operator import itemgetter
 from random import randint
@@ -43,9 +44,9 @@ class QFNetwork:
             i += 1
         return cls(edge_array, name=nicecx.get_name())
 
-    def get_sorted_nodes(self):
+    def get_sorted_nodes(self, reverse=True):
         # get the nodes as a list, sorted by degree, highest degree first
-        return sorted(self.node_dict.values(), key=itemgetter('degree'), reverse=True)
+        return sorted(self.node_dict.values(), key=itemgetter('degree'), reverse=reverse)
 
     def get_nodecount(self):
         return len(self.node_dict.values())
@@ -70,6 +71,60 @@ class QFNetwork:
         for node_id, node in self.node_dict.items():
             node["x"] = center
             node["y"] = center
+
+    def make_spiral(n, center):
+        x_list = [center]
+        y_list = [center]
+        x_dist = 1
+        y_dist = 1
+        x_dir = 1
+        y_dir = 1
+        x = center
+        y = center
+        count = 1
+        while count <= n:
+            for dx in range(1, x_dist):
+                x = x + x_dir
+                x_list.append(x)
+                y_list.append(y)
+
+                count = count+1
+                if count > n:
+                    break
+            x_dir = -x_dir
+            x_dist = x_dist +1
+            for dy in range(1, y_dist):
+                y = y + y_dir
+                x_list.append(x)
+                y_list.append(y)
+                count = count + 1
+                if count > n:
+                    break
+            y_dir = -y_dir
+            y_dist = y_dist + 1
+        return list(zip(x_list, y_list))
+
+    def place_nodes_in_a_spiral(self, center, scale=1):
+        # This layout ensures that no node is on top of 
+        # each other and that they are spaced away from
+        # each other according to the scaling factor.
+        # (the default, 1 = no scaling)
+        # This prevents 16-bit overflow due to the center "spike"
+        # of the repulsion 
+        sorted_nodes = self.get_sorted_nodes(reverse=False)
+        coordinates = self.make_spiral(len(sorted_nodes), center)
+        index = 0
+        for node in sorted_nodes:
+            # start with the low degree nodes in the center
+            # the high degree nodes are at the outside.
+            # the first layout round will therefore push the
+            # high degree nodes out away from the center first,
+            # making space for the later parts of the network.
+            # The conjecture is that this will improve cluster
+            # separation and faster convergence
+            node["x"] = coordinates[index, 0]
+            node["y"] = coordinates[index, 1]
+            index+=index
 
     def get_cx_layout(self, node_dimension=40):
         cx_layout = []

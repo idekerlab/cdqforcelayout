@@ -28,6 +28,9 @@ class QFLayout:
         elif initialize_coordinates == "random":
             logger.debug("init random")
             self.network.place_nodes_randomly(self.gameboard.shape[0])
+        elif initialize_coordinates == "spiral":
+            logger.debug("init spiral")
+            self.network.place_nodes_in_a_spiral(self.gameboard.shape[0])
 
         self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
