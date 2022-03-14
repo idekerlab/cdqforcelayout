@@ -72,7 +72,7 @@ class QFNetwork:
             node["x"] = center
             node["y"] = center
 
-    def make_spiral(n, center):
+    def make_spiral(self, n, center):
         x_list = [center]
         y_list = [center]
         x_dist = 1
@@ -113,8 +113,7 @@ class QFNetwork:
         # of the repulsion 
         sorted_nodes = self.get_sorted_nodes(reverse=False)
         coordinates = self.make_spiral(len(sorted_nodes), center)
-        index = 0
-        for node in sorted_nodes:
+        for index in range(len(sorted_nodes)):
             # start with the low degree nodes in the center
             # the high degree nodes are at the outside.
             # the first layout round will therefore push the
@@ -122,9 +121,9 @@ class QFNetwork:
             # making space for the later parts of the network.
             # The conjecture is that this will improve cluster
             # separation and faster convergence
-            node["x"] = coordinates[index, 0]
-            node["y"] = coordinates[index, 1]
-            index+=index
+            node = sorted_nodes[index]
+            node["x"] = coordinates[index][0]
+            node["y"] = coordinates[index][1]
 
     def get_cx_layout(self, node_dimension=40):
         cx_layout = []

@@ -3,9 +3,12 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-from cdqforcelayout import qfnetwork
+# from cdqforcelayout import qfnetwork
+import qfnetwork
 from math import sqrt
-from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+#from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+from qfields import repulsion_field, attraction_field, add_field, subtract_field
+
 import logging
 
 
@@ -30,7 +33,7 @@ class QFLayout:
             self.network.place_nodes_randomly(self.gameboard.shape[0])
         elif initialize_coordinates == "spiral":
             logger.debug("init spiral")
-            self.network.place_nodes_in_a_spiral(self.gameboard.shape[0])
+            self.network.place_nodes_in_a_spiral(center)
 
         self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
@@ -39,6 +42,12 @@ class QFLayout:
         # make a scratchpad board where we add all the attraction fields
         # and the use it to update the gameboard
         self.s_field = np.zeros(self.gameboard.shape, self.integer_type)
+
+        # initialize the repulsion field and the mask
+        for node in self.network.get_sorted_nodes():  
+            add_field(self.r_field, self.gameboard, node["x"], node["y"])
+            self.gameboard_mask[node["x"], node["y"]] = 1
+
 
 
     @classmethod
@@ -137,13 +146,7 @@ class QFLayout:
 
     def do_layout(self, rounds=1):
         node_list = self.network.get_sorted_nodes()
-
-        # initialize the repulsion field and the mask
-        for node in node_list:  
-            add_field(self.r_field, self.gameboard, node["x"], node["y"])
-            self.gameboard_mask[node["x"], node["y"]] = 1
-
-                
+              
         # perform the rounds of layout
         # start = timer()
         for n in range(0, rounds):

@@ -2,7 +2,9 @@ import os
 import sys
 import ndex2
 import json
-from numpy import int32
+from numpy import int32, int16
+import seaborn
+import matplotlib.pyplot as plt
 
 # the sys.path.insert enables invocation of this
 # script from this directory and allows usage the other
@@ -15,9 +17,9 @@ from numpy import int32
 #
 sys.path.insert(0, os.path.abspath('../'))
 
-from cdqforcelayout import qflayout
+#from cdqforcelayout import qflayout
 
-
+import qflayout
 NDEXUSER = "dexterpratt"
 NDEXPASSWORD = "cytoscaperules"
 SERVER = "http://www.ndexbio.org"
@@ -45,8 +47,10 @@ print(ncipid_files)#
 
 def layout(network):
     qfl = qflayout.QFLayout.from_nicecx(network,initialize_coordinates="spiral", sparsity=30, r_radius=10, 
-                        a_radius=40, r_scale=7, a_scale=5, center_attractor_scale=0.02, dtype=int)
-    new_layout = qfl.do_layout(rounds=10)
+                        a_radius=40, r_scale=7, a_scale=5, center_attractor_scale=0.02, dtype=int16)
+    seaborn.heatmap(qfl.gameboard)
+    plt.show()
+    new_layout = qfl.do_layout(rounds=3)
     network.set_opaque_aspect(ndex2.constants.CARTESIAN_LAYOUT_ASPECT, new_layout)
 
 layout(ncipid_networks[2])
