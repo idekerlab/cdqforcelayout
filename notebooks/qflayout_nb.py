@@ -3,11 +3,11 @@
 # and parameters for the algorithm.
 #
 import numpy as np
-from cdqforcelayout import qfnetwork
-#import qfnetwork
+# from cdqforcelayout import qfnetwork
+from qfnetwork_nb import QFNetwork
 from math import sqrt
-from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
-#from qfields import repulsion_field, attraction_field, add_field, subtract_field
+#from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+from qfields_nb import repulsion_field, attraction_field, add_field, subtract_field
 
 import logging
 
@@ -52,7 +52,7 @@ class QFLayout:
 
     @classmethod
     def from_nicecx(cls, nicecx, **kwargs):
-        return cls(qfnetwork.QFNetwork.from_nicecx(nicecx), **kwargs)
+        return cls(QFNetwork.from_nicecx(nicecx), **kwargs)
 
     def _make_gameboard(self, sparsity, center_attractor_scale):
         radius = round(sqrt(self.network.get_nodecount() * sparsity))
