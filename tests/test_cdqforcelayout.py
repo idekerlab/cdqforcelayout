@@ -15,7 +15,7 @@ import io
 import tempfile
 import shutil
 import json
-from ..cdqforcelayout import cdqforcelayoutcmd
+from cdqforcelayout import cdqforcelayoutcmd
 
 
 class TestCdqforceLayout(unittest.TestCase):
@@ -74,7 +74,7 @@ class TestCdqforceLayout(unittest.TestCase):
                                      'test_nectin_adhesion.cx')
 
             args = cdqforcelayoutcmd._parse_arguments('desc',
-                                                      ['nectin_adhesion'])
+                                                      [five_node])
             o_stream = io.StringIO()
             e_stream = io.StringIO()
             res = cdqforcelayoutcmd.run_layout(args, out_stream=o_stream,
