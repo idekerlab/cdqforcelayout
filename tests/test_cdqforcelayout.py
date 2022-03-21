@@ -70,11 +70,11 @@ class TestCdqforceLayout(unittest.TestCase):
     def test_runlayout_on_test_nectin_adhesion(self):
         temp_dir = tempfile.mkdtemp()
         try:
-            five_node = os.path.join(os.path.dirname(__file__), 'data',
-                                     'test_nectin_adhesion.cx')
+            nectin = os.path.join(os.path.dirname(__file__), 'data',
+                                  'test_nectin_adhesion.cx')
 
             args = cdqforcelayoutcmd._parse_arguments('desc',
-                                                      [five_node])
+                                                      [nectin])
             o_stream = io.StringIO()
             e_stream = io.StringIO()
             res = cdqforcelayoutcmd.run_layout(args, out_stream=o_stream,
@@ -83,14 +83,15 @@ class TestCdqforceLayout(unittest.TestCase):
             self.assertEqual(0, res)
             cart_layout = json.loads(o_stream.getvalue())
             self.assertTrue(isinstance(cart_layout, list))
-            #self.assertEqual(5, len(cart_layout))
-            #for entry in cart_layout:
-            #    self.assertTrue('node' in entry)
-            #    self.assertTrue('x' in entry)
-             #   self.assertTrue('y' in entry)
-              #  self.assertTrue(entry['node'] in [175, 180, 185, 190, 195])
+            self.assertEqual(33, len(cart_layout))
+            for entry in cart_layout:
+                self.assertTrue('node' in entry)
+                self.assertTrue('x' in entry)
+                self.assertTrue('y' in entry)
+
         finally:
             shutil.rmtree(temp_dir)
+
 
 if __name__ == '__main__':
     sys.exit(unittest.main())
