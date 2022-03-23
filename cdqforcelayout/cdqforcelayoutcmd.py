@@ -55,7 +55,7 @@ def _parse_arguments(desc, args):
                         help='TODO, please fill out')
     parser.add_argument('--r_scale', default=7, type=int,
                         help='TODO, please fill out')
-    parser.add_argument('--r_scale', default=7, type=int,
+    parser.add_argument('--a_scale', default=5, type=int,
                         help='TODO, please fill out')
     parser.add_argument('--node_size', default=40, type=int,
                         help='TODO, please fill out')
