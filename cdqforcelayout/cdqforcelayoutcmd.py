@@ -59,8 +59,8 @@ def _parse_arguments(desc, args):
                         help='TODO, please fill out')
     parser.add_argument('--center_attractor_scale', default=0.02, type=float,
                         help='TODO, please fill out')
-    parser.add_argument('--initialize_coordinates', choices=['center', 'random'],
-                        default='center',
+    parser.add_argument('--initialize_coordinates', choices=['center', 'random', 'spiral'],
+                        default='spiral',
                         help='TODO, please fill out')
     parser.add_argument('--verbose', '-v', action='count', default=0,
                         help='Increases verbosity of logger to standard '

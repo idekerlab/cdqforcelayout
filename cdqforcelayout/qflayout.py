@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class QFLayout:
     def __init__(self, qfnetwork, sparsity=30, r_radius=10, 
                         a_radius=10, r_scale=10, a_scale=5, center_attractor_scale=0.01,
-                        initialize_coordinates="center", dtype=np.int16):
+                        initialize_coordinates="spiral", dtype=np.int16):
         self.integer_type = dtype
         self.network = qfnetwork
         
