@@ -135,8 +135,7 @@ def run_layout(theargs, out_stream=sys.stdout,
                                                 a_radius=theargs.a_radius,
                                                 r_scale=theargs.r_scale,
                                                 a_scale=theargs.a_scale,
-                                                center_attractor_scale=theargs.center_attractor_scale,
-                                                dtype=int)
+                                                center_attractor_scale=theargs.center_attractor_scale)
             new_layout = qfl.do_layout(rounds=theargs.rounds)
             # write value of cartesianLayout aspect to output stream
             logger.debug(str(new_layout))
