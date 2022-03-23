@@ -55,7 +55,9 @@ def _parse_arguments(desc, args):
                         help='TODO, please fill out')
     parser.add_argument('--r_scale', default=7, type=int,
                         help='TODO, please fill out')
-    parser.add_argument('--a_scale', default=5, type=int,
+    parser.add_argument('--r_scale', default=7, type=int,
+                        help='TODO, please fill out')
+    parser.add_argument('--node_size', default=40, type=int,
                         help='TODO, please fill out')
     parser.add_argument('--center_attractor_scale', default=0.02, type=float,
                         help='TODO, please fill out')
@@ -136,7 +138,7 @@ def run_layout(theargs, out_stream=sys.stdout,
                                                 r_scale=theargs.r_scale,
                                                 a_scale=theargs.a_scale,
                                                 center_attractor_scale=theargs.center_attractor_scale)
-            new_layout = qfl.do_layout(rounds=theargs.rounds)
+            new_layout = qfl.do_layout(rounds=theargs.rounds, node_size=theargs.node_size)
             # write value of cartesianLayout aspect to output stream
             logger.debug(str(new_layout))
             json.dump(new_layout, out_stream)

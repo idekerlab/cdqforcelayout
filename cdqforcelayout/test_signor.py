@@ -15,11 +15,11 @@ import matplotlib.pyplot as plt
 #          the installed modules instead of these.
 #          YOU HAVE BEEN WARNED
 #
-sys.path.insert(0, os.path.abspath('../'))
+this_dir = os.path.abspath('./')
+sys.path.insert(0, this_dir)
 
-#from cdqforcelayout import qflayout
+from cdqforcelayout import qflayout
 
-import qflayout
 NDEXUSER = "dexterpratt"
 NDEXPASSWORD = "cytoscaperules"
 SERVER = "http://www.ndexbio.org"
@@ -29,29 +29,24 @@ def upload_network(cx_network):
     url = url.split('/')[-1]
     print("Network's URL (click to view!): " + SERVER + "/viewer/networks/" + url)
 
-def load_test_cx(filename):
-    parent_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
-    path = os.path.join(parent_dir, "tests", "data", filename)
-    return ndex2.create_nice_cx_from_file(path)
+nci_pid_tcr_signaling_uuid = "0c2862fa-6196-11e5-8ac5-06603eb7f303"
+sonic_hedgehog_uuid = "cfd3528f-a7a4-11eb-9e72-0ac135e8bacf"
+nest_uuid = "60112105-f853-11e9-bb65-0ac135e8bacf"
+string_hc_uuid = "275bd84e-3d18-11e8-a935-0ac135e8bacf"
+cptac_genomic_instability_uuid = "d121e661-4cfc-11e9-9f06-0ac135e8bacf"
+qf_test_2_uuid = "25e5dca6-8eec-11ec-b3be-0ac135e8bacf"
 
-parent_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
-ncipid_path = os.path.join(parent_dir, "tests", "ncipid")
-ncipid_files = [f for f in os.listdir(ncipid_path) if os.path.isfile(os.path.join(ncipid_path, f))]
-ncipid_networks = []
-for filename in ncipid_files:
-    filepath = os.path.join(ncipid_path, filename)
-    ncipid_networks.append(ndex2.create_nice_cx_from_file(filepath))
-
-print(ncipid_files)#
-#upload_network(ncipid_networks[0])
+test_uuid = "2495c9db-aa29-11ec-b3be-0ac135e8bacf"
+network = ndex2.create_nice_cx_from_server(SERVER, uuid=test_uuid)
+network.print_summary()
 
 def layout(network):
-    qfl = qflayout.QFLayout.from_nicecx(network, sparsity=30, r_radius=10, node_size=40,
+    qfl = qflayout.QFLayout.from_nicecx(network, sparsity=30, r_radius=10,
                         a_radius=40, r_scale=7, a_scale=5, center_attractor_scale=0.02, dtype=int16)
     # seaborn.heatmap(qfl.gameboard)
     # plt.show()
-    new_layout = qfl.do_layout(rounds=3)
+    new_layout = qfl.do_layout(rounds=40, node_size=50)
     network.set_opaque_aspect(ndex2.constants.CARTESIAN_LAYOUT_ASPECT, new_layout)
 
-layout(ncipid_networks[2])
-upload_network(ncipid_networks[2])
+layout(network)
+upload_network(network)

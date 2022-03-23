@@ -125,12 +125,12 @@ class QFNetwork:
             node["x"] = coordinates[index][0]
             node["y"] = coordinates[index][1]
 
-    def get_cx_layout(self, node_dimension=40):
+    def get_cx_layout(self, node_size=40):
         cx_layout = []
         for node_id, node in self.node_dict.items():
             logger.debug('nodeid: ' + str(node_id) + ' node: ' + str(node))
             cx_node = {"node": int(node_id),
-                       "x": int(node["x"] * node_dimension),
-                       "y": int(node["y"] * node_dimension)}
+                       "x": int(node["x"] * node_size),
+                       "y": int(node["y"] * node_size)}
             cx_layout.append(cx_node)
         return cx_layout

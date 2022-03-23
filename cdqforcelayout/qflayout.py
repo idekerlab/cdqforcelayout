@@ -141,10 +141,7 @@ class QFLayout:
         #     print("no free minimum found for node ")
 
 
-
-
-
-    def do_layout(self, rounds=1):
+    def do_layout(self, rounds=1, node_size=40):
         node_list = self.network.get_sorted_nodes()
               
         # perform the rounds of layout
@@ -160,4 +157,4 @@ class QFLayout:
 
         # end = timer()
         # print("layout time = ", end - start)
-        return self.network.get_cx_layout()
+        return self.network.get_cx_layout(node_size=node_size)
