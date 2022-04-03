@@ -2,6 +2,8 @@ import numpy as np
 from math import sqrt
 import logging
 
+from sqlalchemy import between
+
 
 logger = logging.getLogger(__name__)
 
@@ -9,6 +11,7 @@ logger = logging.getLogger(__name__)
 # Adding fields:
 # The two fields are combined at an x-y offset, destructively modifying the target field
 # It is neccessary to crop the added field to fit within the target field
+#
 def add_field(source_field, target_field, x, y, remove=False, show_node_dict=False):
     if show_node_dict: print("node_dict", x,y)
     target_x_max = target_field.shape[0] - 1
@@ -78,6 +81,10 @@ def subtract_field(source_field, target_field, x, y, show_node_dict=False):
 
 
 def attraction_field(radius, scale, dtype):
+    #
+    # create a QField with array with a
+    # linear slope -scale at the center
+    #
     dimension = (2*radius)+1
     ef = np.zeros((dimension, dimension), dtype=dtype)
     energy = int(scale * radius)
@@ -91,6 +98,15 @@ def attraction_field(radius, scale, dtype):
     return ef
 
 def repulsion_field(radius, scale, dtype, center_spike=False):
+    #
+    # create a QField array in which the energy decreases
+    # by the inverse square of the distance.
+    #
+    # a "spike" can be added at the center to ensure that
+    # placement of one node on top of another is never
+    # a minima. At the moment, the size of the spike is
+    # crudely hardwired at 1000
+    #
     dimension = (2*radius)+1
     ef = np.zeros((dimension, dimension), dtype=dtype)
     energy = int(scale * radius)
@@ -103,3 +119,52 @@ def repulsion_field(radius, scale, dtype, center_spike=False):
             #energy = 1000 if distance == 0 else int(scale * (abs(distance - radius)**2))
             ef[x,y] = center_energy if distance == 0 else int(energy / distance**2) + int(0.1 * (energy / distance))
     return ef
+
+def bias_fields(shape, dtype, direction, bias):
+    #
+    # return two fielsd the size of the g_field that
+    # slope from one side to another
+    #
+    # at the moment, the driving use case for 
+    # this is to apply the bias field to the g_field
+    # when a node has in_degree = zero or out_degree = 0
+    # in order to bias the placment of nodes such
+    # that the order aligns with the direction of
+    # the edges.
+    #
+    sb_field = np.zeros(shape, dtype=dtype)
+    tb_field = np.zeros(shape, dtype=dtype)
+   
+    if direction == "top" or direction == "bottom":
+        slope = bias / shape[0]
+        # scan over all the rows
+        for y in range(0, shape[1]):
+            # for each row, make a slope between
+            # the value of "bias" and zero,
+            # opposite directions for sb and tb fields
+            for x in range(0, shape[0]):
+                if direction == "top":
+                    sb_field[x, y] = int(bias + (x * -slope))
+                    tb_field[x, y] = int(x * slope)
+                if direction == "bottom":
+                    tb_field[x, y] = int(bias + (x * -slope))
+                    sb_field[x, y] = int(x * slope)
+        
+    elif direction == "left" or direction == "right":
+        slope = bias / shape[1]
+        # scan over all the columns
+        for x in range(0, shape[0]):
+            # for each column, make a slope between
+            # the value of "bias" and zero,
+            # opposite directions for sb and tb fields
+            for y in range(0, shape[1]):
+                if direction == "left":
+                    sb_field[x, y] = int(bias + (y * -slope))
+                    tb_field[x, y] = int(y * slope)
+                if direction == "right":
+                    tb_field[x, y] = int(bias + (y * -slope))
+                    sb_field[x, y] = int(y * slope)
+
+    return sb_field, tb_field
+
+

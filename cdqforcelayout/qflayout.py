@@ -6,7 +6,7 @@ import numpy as np
 from cdqforcelayout import qfnetwork
 #import qfnetwork
 from math import sqrt
-from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field
+from cdqforcelayout.qfields import repulsion_field, attraction_field, add_field, subtract_field, bias_fields
 #from qfields import repulsion_field, attraction_field, add_field, subtract_field
 
 import logging
@@ -18,10 +18,12 @@ logger = logging.getLogger(__name__)
 class QFLayout:
     def __init__(self, qfnetwork, sparsity=30, r_radius=10, 
                         a_radius=10, r_scale=10, a_scale=5, center_attractor_scale=0.01,
-                        initialize_coordinates="spiral", dtype=np.int16):
+                        initialize_coordinates="spiral", dtype=np.int16, directed_flow="not_enabled", 
+                        directed_flow_bias=0.01):
         self.integer_type = dtype
         self.network = qfnetwork
         
+        # this is now g_field, the variable names need to be updatated
         self.gameboard, center = self._make_gameboard(sparsity, center_attractor_scale)
         self.gameboard_mask = np.zeros(self.gameboard.shape, dtype=self.integer_type)
 
@@ -36,9 +38,25 @@ class QFLayout:
             self.network.place_nodes_in_a_spiral(center)
 
         self.r_field = repulsion_field(r_radius, r_scale, self.integer_type, center_spike=True)
+        
+        # Three attraction fields are created in order to
+        # scale attraction depending on node degree
+        #
         self.a_field = attraction_field(a_radius, a_scale, self.integer_type)
         self.a_field_med = attraction_field(a_radius, a_scale*5, self.integer_type)
         self.a_field_high = attraction_field(a_radius, a_scale*10, self.integer_type)
+
+        # If we are in directed flow mode, create two gameboard-size fields, the source bias 
+        # and the target bias. These will be added to the gameboard to bias the 
+        # placement of nodes with only outgoing edges to one side and nodes with only incoming
+        # edges to the opposite side.
+        #
+        if directed_flow in ("top", "bottom", "left", "right"):
+            self.directed_flow_mode = True
+            self.sb_field, self.tb_field = bias_fields(self.gameboard.shape, self.integer_type, directed_flow, directed_flow_bias)
+        else:
+            self.directed_flow_mode = False
+
         # make a scratchpad board where we add all the attraction fields
         # and the use it to update the gameboard
         self.s_field = np.zeros(self.gameboard.shape, self.integer_type)
@@ -48,12 +66,15 @@ class QFLayout:
             add_field(self.r_field, self.gameboard, node["x"], node["y"])
             self.gameboard_mask[node["x"], node["y"]] = 1
 
-
-
     @classmethod
     def from_nicecx(cls, nicecx, **kwargs):
         return cls(qfnetwork.QFNetwork.from_nicecx(nicecx), **kwargs)
 
+    #
+    # return the g_field for the QFLayout
+    #
+    # This still uses the old name "gameboard" at the moment
+    # 
     def _make_gameboard(self, sparsity, center_attractor_scale):
         radius = round(sqrt(self.network.get_nodecount() * sparsity))
         dimension = (2*radius)+1
@@ -74,15 +95,16 @@ class QFLayout:
         # also set that location of the gameboard_mask to zero
         subtract_field(self.r_field, self.gameboard, node['x'], node['y'])
         #self.gameboard[node['x'], node['y']] = 32768 # 
-        self.gameboard_mask[node['x'], node["y"]] = 0
+        #self.gameboard_mask[node['x'], node["y"]] = 0
 
         # clear the scratchpad
         self.s_field[...]=0
         # add the attractions to the scratchpad
         degree = node["degree"]   
         for adj_node_id in node['adj']:
-            # add an attraction field to the scratchpad field
-            # where lower degree nodes have higher attractions
+            # add an a_field to the scratchpad field
+            # at the position of the adjacent node
+            # lower degree nodes have higher attractions
             adj_node = self.network.node_dict[adj_node_id]
             if degree == 1:
                 add_field(self.a_field_high, self.s_field, adj_node["x"], adj_node["y"])
@@ -90,55 +112,35 @@ class QFLayout:
                 add_field(self.a_field_med, self.s_field, adj_node["x"], adj_node["y"])
             else:
                 add_field(self.a_field, self.s_field, adj_node["x"], adj_node["y"])
-                
+
+        # check if we are in directed_flow mode
+        if self.directed_flow_mode is True and degree != 0:
+            # if the out_degree of the node is zero, add the tb_field
+            # (the node is only a target, bias its placement to the target side)
+            if node["out_degree"] == 0:
+                self.s_field += self.tb_field
+            # if the in_degree of the node is zero and there is a sb_field
+            # (the node is only a source, bias its placement to the source side)
+            if node["in_degree"] == 0:
+                self.s_field += self.sb_field
+
         # add s_field to the gameboard
         self.gameboard += self.s_field     
         
-        # select the destination
-        # idea #1: choose a location with the minimum value
+        # place the node at a mimima in the gameboard
         # argmin returns the index of the first location containing
         # the minimum value in a flattened version of the array
         # unravel_index turns the index back into the coordinates
+        #
         destination = np.unravel_index(np.argmin(self.gameboard, axis=None), self.s_field.shape)
+        node["x"] = destination[0]
+        node["y"] = destination[1]            
 
-        # minima = np.where(self.gameboard == self.gameboard.min())
-        # coords = zip(minima[0], minima[1])
-        # # default to the first minima
-        # destination = None
-        # for coord in coords:
-        #     # find a coordinate that is not already taken
-        #     if self.gameboard_mask[coord[0], coord[1]] == 0:
-        #         destination = coord
-        #         break
+        # add the node's repulsion field at the destination 
+        add_field(self.r_field, self.gameboard, destination[0], destination[1])
 
-        if True: #self.gameboard_mask[destination[0], destination[1]] == 0:
-
-        #if destination != None:
-            # the destination is free, put the node there
-            # update the node's coordinates
-            node["x"] = destination[0]
-            node["y"] = destination[1]            
-
-            # add the node's repulsion field at the destination and update the mask
-            add_field(self.r_field, self.gameboard, destination[0], destination[1])
-            self.gameboard_mask[destination[0], destination[1]] = 1
-        else:
-            # Skip this round. put the r_field back and reset the mask
-            add_field(self.r_field, self.gameboard, node['x'], node['y'])
-            self.gameboard_mask[node['x'], node["y"]] = 1
-
-        # in both cases, subtract the s_field to revert the gameboard to just the repulsions
+        # subtract the s_field, leaving the gameboard with only the repulsion fields
         self.gameboard -= self.s_field
-
-
-        # # in the rare case in which all the minima are taken, 
-        # # give up and place the node on top of another
-        # # If it was important, we could add a search around the 
-        # # coordinate to find the nearest empty spot, but 
-        # # if we reduce this to an edge case its ok.
-
-        # if destination == None:
-        #     print("no free minimum found for node ")
 
 
     def do_layout(self, rounds=1, node_size=40):
